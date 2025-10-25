@@ -53,3 +53,9 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 - Inspired by modern tech conference websites.  
 - Tailwind CSS Documentation for styling guidance.  
 - Google Maps for embedding venue location.  
+
+---
+
+## 🌐 Live Demo
+Check out the live version of **TechWave 2025** here:  
+[https://techwave-2025.vercel.app/](https://your-vercel-link.vercel.app)
