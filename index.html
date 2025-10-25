@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="TechWave 2025: Join India's premier 3-day tech conference featuring innovation, workshops, and industry leaders.">
+    <title>TechWave 2025</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="overflow-x-hidden">
+    <nav class="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-purple-500/40">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 w-full">
+            <div class="event flex-shrink-0">
+                <h1 class="event-name hover:cursor-pointer text-white font-orbitron">
+                    <span class="text-2xl md:text-3xl">TechWave</span>
+                    <span class="year text-base md:text-xl">2025</span>
+                </h1>
+            </div>
+
+            <div
+                class="flex items-center justify-end md:justify-center md:gap-8 gap-2 flex-wrap md:flex-nowrap w-full md:w-auto">
+                <button id="menu-btn" aria-label="Toggle menu"
+                    class="md:flex lg:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-purple-800/30 focus:outline-none">
+                    <span class="w-6 h-0.5 bg-purple-400 transition-all"></span>
+                    <span class="w-6 h-0.5 bg-purple-400 transition-all"></span>
+                    <span class="w-6 h-0.5 bg-purple-400 transition-all"></span>
+                </button>
+
+                <ul id="menu" class="hidden lg:flex list-none justify-center gap-1 text-lg text-white font-medium">
+                    <li><a href="#home" class="no-underline text-purple-300 px-2 py-1 inline-block">Home</a>
+                    </li>
+                    <li><a href="about.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">About</a>
+                    </li>
+                    <li><a href="speakers.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Speakers</a>
+                    </li>
+                    <li><a href="sponsors.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Sponsors</a>
+                    </li>
+                    <li><a href="schedule.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Schedule</a>
+                    </li>
+                    <li><a href="venue.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Venue</a>
+                    </li>
+                </ul>
+
+                <div class="block">
+                    <button aria-label="Register button"
+                        class="bg-purple-600 px-4 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-purple-800 text-white font-semibold transition text-sm md:text-base w-full md:w-auto text-center">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden flex flex-col items-center bg-black/80 text-white py-4 space-y-3 transition-all duration-300 ease-in-out transform origin-top">
+            <a href="#home" class="text-purple-300 inline-block text-base">Home</a>
+            <a href="about.html" class="hover:text-purple-400 transition text-base">About</a>
+            <a href="speakers.html" class="hover:text-purple-400 transition text-base">Speakers</a>
+            <a href="sponsors.html" class="hover:text-purple-400 transition text-base">Sponsors</a>
+            <a href="schedule.html" class="hover:text-purple-400 transition text-base">Schedule</a>
+            <a href="venue.html" class="hover:text-purple-400 transition text-base">Venue</a>
+        </div>
+    </nav>
+
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home"
+        class="relative flex flex-col justify-center items-center text-center min-h-screen px-6 md:px-12">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-700/10 to-transparent blur-3xl">
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-orbitron font-bold text-white mb-4 leading-tight">
+            Embrace the Future at <span class="text-purple-400">TechWave 2025</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-8">
+            The premier technology conference bringing innovators, creators, and leaders together to shape the
+            digital
+            future.
+        </p>
+
+        <!-- Countdown Timer -->
+        <div id="countdown"
+            class="flex flex-wrap justify-center gap-6 md:gap-10 text-white text-2xl font-mono mt-8 animate-fadeIn">
+
+            <div class="flex flex-col items-center min-w-[70px]">
+                <span id="days"
+                    class="text-5xl sm:text-6xl font-bold text-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]">00</span>
+                <span class="text-gray-300 text-sm uppercase tracking-widest">Days</span>
+            </div>
+
+            <div class="flex flex-col items-center min-w-[70px]">
+                <span id="hours"
+                    class="text-5xl sm:text-6xl font-bold text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.8)]">00</span>
+                <span class="text-gray-300 text-sm uppercase tracking-widest">Hours</span>
+            </div>
+
+            <div class="flex flex-col items-center min-w-[70px]">
+                <span id="minutes"
+                    class="text-5xl sm:text-6xl font-bold text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]">00</span>
+                <span class="text-gray-300 text-sm uppercase tracking-widest">Minutes</span>
+            </div>
+
+            <div class="flex flex-col items-center min-w-[70px]">
+                <span id="seconds"
+                    class="text-5xl sm:text-6xl font-bold text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">00</span>
+                <span class="text-gray-300 text-sm uppercase tracking-widest">Seconds</span>
+            </div>
+        </div>
+
+
+        <button
+            class="relative bg-purple-600 px-6 py-3 mt-10 rounded-full text-white font-semibold hover:bg-purple-800 transition-all after:content-[''] after:absolute after:inset-0 after:rounded-full after:border after:border-purple-400/40 after:blur after:opacity-70 after:-z-10">
+            Explore More
+        </button>
+
+        <div class="absolute bottom-8 animate-bounce text-purple-400">↓</div>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section id="about" class="py-20 px-6 md:px-16 relative">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-blue-600/10 to-transparent blur-2xl pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">About the Event</h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                TechWave 2025 is a global tech conference uniting developers, innovators, and leaders to explore AI,
+                Web3,
+                Cloud, and Next-Gen tech revolutions.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div
+                    class="glass-card p-6 rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-purple-900/20">
+                    <h3 class="text-xl font-semibold text-purple-300 mb-2">Innovation</h3>
+                    <p class="text-gray-400 text-sm">Dive deep into groundbreaking trends shaping the digital world.
+                    </p>
+                </div>
+
+                <div
+                    class="glass-card p-6 rounded-2xl border border-blue-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-blue-900/20">
+                    <h3 class="text-xl font-semibold text-blue-300 mb-2">Networking</h3>
+                    <p class="text-gray-400 text-sm">Meet global pioneers, startups, and industry leaders in one
+                        space.
+                    </p>
+                </div>
+
+                <div
+                    class="glass-card p-6 rounded-2xl border border-pink-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-pink-900/20">
+                    <h3 class="text-xl font-semibold text-pink-300 mb-2">Workshops</h3>
+                    <p class="text-gray-400 text-sm">Gain hands-on experience through interactive and live sessions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SPEAKERS SECTION ================= -->
+    <section id="speakers" class="py-20 px-6 md:px-16 relative">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-purple-800/10 via-cyan-700/10 to-transparent blur-2xl pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Meet the Speakers</h2>
+            <p class="text-lg text-gray-300 mb-12">Leading voices in tech, sharing insights to shape tomorrow.</p>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Speaker Card -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md p-6 hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-purple-900/20">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-purple-800/30 opacity-0 group-hover:opacity-100 transition-all">
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-1">Ava Thompson</h3>
+                    <p class="text-purple-300 text-sm mb-3">AI Research Scientist</p>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-all">
+                        Exploring next-gen AI models and human-machine collaboration.
+                    </p>
+                </div>
+
+                <!-- Speaker Card -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl border border-blue-400/20 bg-white/5 backdrop-blur-md p-6 hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-blue-900/20">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-blue-800/30 opacity-0 group-hover:opacity-100 transition-all">
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-1">Rohan Patel</h3>
+                    <p class="text-blue-300 text-sm mb-3">Cloud Solutions Architect</p>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-all">
+                        Architecting scalable cloud systems for global innovation.
+                    </p>
+                </div>
+
+                <!-- Speaker Card -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl border border-pink-400/20 bg-white/5 backdrop-blur-md p-6 hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-pink-900/20">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-pink-800/30 opacity-0 group-hover:opacity-100 transition-all">
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-1">Li Wei</h3>
+                    <p class="text-pink-300 text-sm mb-3">Blockchain Innovator</p>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-all">
+                        Redefining finance and data ownership through Web3.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SCHEDULE PREVIEW SECTION ================= -->
+    <section id="schedule-preview" class="py-20 px-6 md:px-16 relative">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-blue-500/10 to-transparent blur-2xl pointer-events-none">
+        </div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Event Schedule</h2>
+            <p class="text-gray-300 mb-12">Get a quick glance at our 3-day event schedule.</p>
+            <div class="grid md:grid-cols-3 gap-6 text-gray-300">
+                <div
+                    class="glass-card p-6 rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-purple-900/20">
+                    <h3 class="text-xl font-semibold text-purple-300 mb-2">Day 1</h3>
+                    <p>Keynote Sessions & AI Workshops</p>
+                </div>
+                <div
+                    class="glass-card p-6 rounded-2xl border border-blue-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-blue-900/20">
+                    <h3 class="text-xl font-semibold text-blue-300 mb-2">Day 2</h3>
+                    <p>Panel Discussions & Networking</p>
+                </div>
+                <div
+                    class="glass-card p-6 rounded-2xl border border-pink-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-pink-900/20">
+                    <h3 class="text-xl font-semibold text-pink-300 mb-2">Day 3</h3>
+                    <p>Closing Ceremony & Awards</p>
+                </div>
+            </div>
+            <button
+                class="mt-8 bg-purple-600 px-6 py-3 rounded-full text-white font-semibold hover:bg-purple-800 transition">View
+                Full Schedule</button>
+        </div>
+    </section>
+
+    <!-- ================= SPONSORS SECTION ================= -->
+    <section id="sponsors" class="py-20 relative overflow-hidden">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-pink-500/10 to-transparent blur-2xl pointer-events-none">
+        </div>
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Our Sponsors</h2>
+            <p class="text-gray-300 mb-12">We thank our amazing sponsors for making TechWave 2025 possible.</p>
+
+            <div class="overflow-hidden">
+                <div class="flex animate-scroll gap-12">
+                    <img src="assets/Google.png" alt="Google" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Microsoft.png" alt="Microsoft" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Apple.png" alt="Apple" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Amazon.png" alt="Amazon" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Meta.png" alt="Meta" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Intel.png" alt="Intel" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Nvidia.png" alt="NVIDIA" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/TCS.png" alt="TCS (Tata Consultancy Services)" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Infosys.png" alt="Infosys" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Flipkart.png" alt="Flipkart" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Wipro.png" alt="Wipro" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Reliance-Jio.png" alt="Reliance Jio" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Zoho.png" alt="Zoho" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Paytm.png" alt="Paytm" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Swiggy.png" alt="Swiggy" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Google.png" alt="Google" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Microsoft.png" alt="Microsoft" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Apple.png" alt="Apple" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Amazon.png" alt="Amazon" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Meta.png" alt="Meta" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Intel.png" alt="Intel" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Nvidia.png" alt="NVIDIA" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/TCS.png" alt="TCS (Tata Consultancy Services)" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Infosys.png" alt="Infosys" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Flipkart.png" alt="Flipkart" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Wipro.png" alt="Wipro" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Reliance-Jio.png" alt="Reliance Jio" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Zoho.png" alt="Zoho" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Paytm.png" alt="Paytm" class="h-16 mx-4" loading="lazy">
+                    <img src="assets/Swiggy.png" alt="Swiggy" class="h-16 mx-4" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS SECTION ================= -->
+    <section id="testimonials" class="py-20 px-6 md:px-16 relative">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-cyan-700/10 to-transparent blur-2xl pointer-events-none">
+        </div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">What Attendees Say</h2>
+            <p class="text-gray-300 mb-12">Hear from participants of past TechWave events.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="glass-card p-6 rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-purple-900/20">
+                    <p class="text-gray-300 italic mb-4">"TechWave 2024 was a game-changer! The workshops were hands-on
+                        and insightful."</p>
+                    <h3 class="text-xl font-semibold text-purple-300">Alicia M.</h3>
+                    <p class="text-gray-400 text-sm">Software Developer</p>
+                </div>
+                <div
+                    class="glass-card p-6 rounded-2xl border border-blue-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-blue-900/20">
+                    <p class="text-gray-300 italic mb-4">"Loved the networking opportunities. Met so many innovators and
+                        industry leaders."</p>
+                    <h3 class="text-xl font-semibold text-blue-300">Rohit S.</h3>
+                    <p class="text-gray-400 text-sm">Entrepreneur</p>
+                </div>
+                <div
+                    class="glass-card p-6 rounded-2xl border border-pink-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-pink-900/20">
+                    <p class="text-gray-300 italic mb-4">"The keynote sessions inspired me to explore AI and blockchain
+                        more seriously."</p>
+                    <h3 class="text-xl font-semibold text-pink-300">Li Wei</h3>
+                    <p class="text-gray-400 text-sm">Blockchain Enthusiast</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CALL TO ACTION / REGISTER ================= -->
+    <section class="py-20 bg-purple-900 text-center relative">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-purple-800/20 via-pink-700/20 to-transparent blur-3xl pointer-events-none">
+        </div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-4xl font-bold text-white mb-4">Ready to Join TechWave 2025?</h2>
+            <p class="text-gray-300 mb-6">Don’t miss out on the premier tech conference of the year. Reserve your spot
+                now!</p>
+            <button
+                class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">Register
+                Now</button>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-black/60 border-t border-purple-700/20 py-10 text-center text-gray-300">
+        <div class="max-w-6xl mx-auto px-6">
+            <h3 class="font-orbitron text-purple-400 text-2xl mb-3">TechWave 2025</h3>
+            <p class="mb-4 text-gray-400">📧 contact@techwave2025.com | 📞 +91 98765 43210</p>
+            <p class="text-sm text-gray-500 mb-4">📍 NESCO IT Park, Goregaon (E), Mumbai, India</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://x.com/nancys0929" target="_blank" class="hover:text-purple-400 transition">Twitter</a>
+                <a href="https://www.linkedin.com/in/nancy-sangani-a2938132b" target="_blank"
+                    class="hover:text-purple-400 transition">LinkedIn</a>
+                <a href="https://github.com/nancysangani" target="_blank"
+                    class="hover:text-purple-400 transition">GitHub</a>
+            </div>
+            <p class="mt-6 text-gray-500 text-sm">© 2025 TechWave Conference. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

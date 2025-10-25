@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover the sponsors supporting TechWave 2025 and their contribution to India's top technology conference.">
+    <title>Sponsors | TechWave 2025</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-[#0d1117] text-gray-300 font-inter">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-purple-500/40">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 w-full">
+            <div class="event flex-shrink-0">
+                <h1 class="event-name hover:cursor-pointer text-white font-orbitron">
+                    <span class="text-2xl md:text-3xl">TechWave</span>
+                    <span class="year text-base md:text-xl">2025</span>
+                </h1>
+            </div>
+
+            <div
+                class="flex items-center justify-end md:justify-center md:gap-8 gap-2 flex-wrap md:flex-nowrap w-full md:w-auto">
+                <button id="menu-btn" aria-label="Toggle menu"
+                    class="md:flex lg:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-purple-800/30 focus:outline-none">
+                    <span class="w-6 h-0.5 bg-purple-400 transition-all"></span>
+                    <span class="w-6 h-0.5 bg-purple-400 transition-all"></span>
+                    <span class="w-6 h-0.5 bg-purple-400 transition-all"></span>
+                </button>
+
+                <ul id="menu" class="hidden lg:flex list-none justify-center gap-1 text-lg text-white font-medium">
+                    <li><a href="index.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Home</a>
+                    </li>
+                    <li><a href="about.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">About</a>
+                    </li>
+                    <li><a href="speakers.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Speakers</a>
+                    </li>
+                    <li><a href="sponsors.html" class="no-underline text-purple-300 px-2 py-1 inline-block">Sponsors</a>
+                    </li>
+                    <li><a href="schedule.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Schedule</a>
+                    </li>
+                    <li><a href="venue.html"
+                            class="no-underline hover:text-purple-700 hover:bg-purple-300 px-2 py-1 border-transparent border-b-2 hover:border-purple-700 rounded inline-block hover:-translate-y-1 transition-all">Venue</a>
+                    </li>
+                </ul>
+
+                <div class="block">
+                    <button aria-label="Register button"
+                        class="bg-purple-600 px-4 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-purple-800 text-white font-semibold transition text-sm md:text-base w-full md:w-auto text-center">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden flex flex-col items-center bg-black/80 text-white py-4 space-y-3 transition-all duration-300 ease-in-out transform origin-top">
+            <a href="index.html" class="hover:text-purple-400 transition text-base">Home</a>
+            <a href="about.html" class="hover:text-purple-400 transition text-base">About</a>
+            <a href="speakers.html" class="hover:text-purple-400 transition text-base">Speakers</a>
+            <a href="sponsors.html" class="text-purple-300 inline-block text-base">Sponsors</a>
+            <a href="schedule.html" class="hover:text-purple-400 transition text-base">Schedule</a>
+            <a href="venue.html" class="hover:text-purple-400 transition text-base">Venue</a>
+        </div>
+    </nav>
+
+    <!-- ================= HERO / BANNER ================= -->
+    <section
+        class="relative flex flex-col justify-center items-center text-center min-h-screen px-6 md:px-12 bg-gradient-to-b from-purple-900 to-purple-700">
+        <h1 class="text-5xl md:text-7xl font-orbitron font-bold text-white mb-4 leading-tight">
+            Our <span class="text-purple-400">Sponsors</span>
+        </h1>
+        <p class="text-lg md:text-xl max-w-2xl mb-8">
+            TechWave 2025 is supported by industry-leading partners who make this event possible.
+        </p>
+    </section>
+
+    <section class="py-20 px-6 md:px-16 bg-black/80 relative">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Our Sponsors</h2>
+            <p class="text-gray-300 mb-12">Proud partners powering TechWave 2025</p>
+
+            <!-- Carousel Container -->
+            <div class="relative overflow-hidden py-8">
+                <!-- Carousel Track -->
+                <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                    <!-- Sponsor Items -->
+                    <div
+                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
+                        <img src="assets/Google.png" alt="Google" class="h-12 opacity-80">
+                    </div>
+                    <div
+                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
+                        <img src="assets/Flipkart.png" alt="Flipkart" class="h-12 opacity-80">
+                    </div>
+                    <div
+                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
+                        <img src="assets/Reliance-Jio.png" alt="Reliance-Jio" class="h-12 opacity-80">
+                    </div>
+                    <div
+                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
+                        <img src="assets/Zoho.png" alt="Zoho" class="h-12 opacity-80">
+                    </div>
+                    <div
+                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
+                        <img src="assets/Infosys.png" alt="Infosys" class="h-12 opacity-80">
+                    </div>
+                </div>
+
+                <!-- Indicators -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator active"></div>
+                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
+                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
+                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
+                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= CALL TO ACTION ================= -->
+    <section class="py-20 bg-purple-900 text-center relative">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-4xl font-bold text-white mb-4">Ready to Join TechWave 2025?</h2>
+            <p class="text-gray-300 mb-6">Don’t miss out on the premier tech conference of the year. Reserve your spot
+                now!</p>
+            <button class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
+                Register Now
+            </button>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-black/60 border-t border-purple-700/20 py-10 text-center text-gray-300">
+        <div class="max-w-6xl mx-auto px-6">
+            <h3 class="font-orbitron text-purple-400 text-2xl mb-3">TechWave 2025</h3>
+            <p class="mb-4 text-gray-400">📧 contact@techwave2025.com | 📞 +91 98765 43210</p>
+            <p class="text-sm text-gray-500 mb-4">📍 NESCO IT Park, Goregaon (E), Mumbai, India</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://x.com/nancys0929" target="_blank" class="hover:text-purple-400 transition">Twitter</a>
+                <a href="https://www.linkedin.com/in/nancy-sangani-a2938132b" target="_blank"
+                    class="hover:text-purple-400 transition">LinkedIn</a>
+                <a href="https://github.com/nancysangani" target="_blank"
+                    class="hover:text-purple-400 transition">GitHub</a>
+            </div>
+            <p class="mt-6 text-gray-500 text-sm">© 2025 TechWave Conference. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ================= JS ================= -->
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        menuBtn.addEventListener("click", () => {
+            const spans = menuBtn.querySelectorAll("span");
+            spans[0].classList.toggle("rotate-45");
+            spans[1].classList.toggle("opacity-0");
+            spans[2].classList.toggle("-rotate-45");
+
+            if (mobileMenu.classList.contains("hidden")) {
+                mobileMenu.classList.remove("hidden");
+            } else {
+                mobileMenu.classList.add("hidden");
+            }
+        });
+
+        document.querySelectorAll("#mobile-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                const spans = menuBtn.querySelectorAll("span");
+                spans[0].classList.remove("rotate-45");
+                spans[1].classList.remove("opacity-0");
+                spans[2].classList.remove("-rotate-45");
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const track = document.getElementById('carousel-track');
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+
+            let currentIndex = 0;
+            const itemWidth = items[0].offsetWidth + 32; // Width + margin
+
+            // Function to update carousel position
+            function updateCarousel() {
+                // Calculate the offset to center the current item
+                const offset = (track.offsetWidth / 2) - (itemWidth / 2) - (currentIndex * itemWidth);
+                track.style.transform = `translateX(${offset}px)`;
+
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active', 'bg-purple-500');
+                        indicator.classList.remove('bg-gray-600');
+                    } else {
+                        indicator.classList.remove('active', 'bg-purple-500');
+                        indicator.classList.add('bg-gray-600');
+                    }
+                });
+
+                // Update item styles for visual effect
+                items.forEach((item, index) => {
+                    if (index === currentIndex) {
+                        item.classList.add('scale-105', 'opacity-100', 'shadow-xl');
+                        item.classList.remove('scale-95', 'opacity-70');
+                    } else {
+                        item.classList.add('scale-95', 'opacity-70');
+                        item.classList.remove('scale-105', 'opacity-100', 'shadow-xl');
+                    }
+                });
+            }
+
+            // Indicator click
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function () {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            // Auto-advance carousel
+            setInterval(function () {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            }, 4000);
+
+            // Initialize carousel
+            updateCarousel();
+
+            // Handle window resize
+            window.addEventListener('resize', function () {
+                updateCarousel();
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
