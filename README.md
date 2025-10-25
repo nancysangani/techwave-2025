@@ -58,4 +58,4 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ## 🌐 Live Demo
 Check out the live version of **TechWave 2025** here:  
-[https://techwave-2025.vercel.app/](https://your-vercel-link.vercel.app)
+[https://techwave-2025.vercel.app/](https://techwave-2025.vercel.app/)
