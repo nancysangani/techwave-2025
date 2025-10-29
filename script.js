@@ -654,6 +654,7 @@ const staticSpeakers = [
     designation: "AI Research Lead at Google",
     topic: "The Future of Artificial Intelligence",
     photo: "",
+    track: 'Keynote Sessions'
   },
   {
     id: 2,
