@@ -646,31 +646,6 @@ paymentSuccessModal.addEventListener("click", (e) => {
   }
 });
 
-// ========== STATIC DATA ==========
-const staticSpeakers = [
-  {
-    id: 1,
-    name: "Dr. Sarah Chen",
-    designation: "AI Research Lead at Google",
-    topic: "The Future of Artificial Intelligence",
-    photo: "",
-  },
-  {
-    id: 2,
-    name: "Rajiv Mehta",
-    designation: "Blockchain Architect at Ethereum Foundation",
-    topic: "Web3 and Decentralized Future",
-    photo: "",
-  },
-  {
-    id: 3,
-    name: "Priya Sharma",
-    designation: "Cloud Solutions Director at Microsoft",
-    topic: "Cloud Computing Revolution",
-    photo: "",
-  },
-];
-
 const staticEvents = [
   {
     id: 1,
@@ -700,14 +675,6 @@ const staticEvents = [
 
 // Initialize localStorage with static data if empty
 function initializeStaticData() {
-  if (
-    !localStorage.getItem("speakers") ||
-    JSON.parse(localStorage.getItem("speakers")).length === 0
-  ) {
-    localStorage.setItem("speakers", JSON.stringify(staticSpeakers));
-    console.log("✅ Static speakers data initialized");
-  }
-
   if (
     !localStorage.getItem("events") ||
     JSON.parse(localStorage.getItem("events")).length === 0
