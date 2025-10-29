@@ -132,7 +132,6 @@ function openSpeakerModal(speaker, colorClass) {
 
 // Initialize when page loads
 document.addEventListener("DOMContentLoaded", function () {
-  initializeSpeakersData();
   loadSpeakers();
 
   // Modal close functionality
