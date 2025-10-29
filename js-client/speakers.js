@@ -42,11 +42,11 @@ const staticSpeakers = [
   {
     id: 4,
     name: "Marcus Johnson",
-    designation: "Cybersecurity Expert at CyberShield",
-    topic: "Next-Gen Security Threats",
+    designation: "Host of the Event",
+    topic: "Awards and Closing Ceremony",
     photo: "",
-    track: "panel discussions",
-    bio: "Cybersecurity veteran with focus on threat intelligence and zero-trust architectures. Former white-hat hacker turned security consultant.",
+    track: "awards",
+    bio: "Hosted 250+ Events",
   },
 ];
 
