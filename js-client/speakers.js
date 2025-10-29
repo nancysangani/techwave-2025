@@ -208,12 +208,3 @@ function initializeSpeakersData() {
     console.log("✅ Static speakers data initialized");
   }
 }
-
-// Update your DOMContentLoaded event listener
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize data first
-  initializeSpeakersData();
-
-  // Then load speakers
-  loadSpeakers();
-});
