@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap");
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Custom Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #0d1117;
+  background-image: radial-gradient(
+      at 20% 30%,
+      rgba(147, 15, 242, 0.4) 0px,
+      transparent 60%
+    ),
+    radial-gradient(at 80% 20%, rgba(60, 120, 255, 0.3) 0px, transparent 60%),
+    radial-gradient(at 50% 80%, rgba(255, 100, 200, 0.2) 0px, transparent 60%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #c9d1d9;
+  min-height: 100vh;
+}
+
+.year {
+  color: #d9aff7;
+  text-shadow: 1px 1px 5px #a546f3, -1px -1px 5px #a546f3;
+}
+
+nav {
+  position: sticky;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+}
+
+.nav-container {
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid #930ff2;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 15px rgba(147, 15, 242, 0.2);
+}
+
+.event h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 32px;
+  color: #c9d1d9;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+#countdown span {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  animation: pulse 1.5s infinite;
+}
+
+#countdown span:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.8),
+    0 0 30px rgba(96, 165, 250, 0.8);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  gap: 3rem;
+  min-width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+/* === Mobile Menu Slide Animation === */
+#mobile-menu {
+  transform-origin: top;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#mobile-menu.hidden {
+  opacity: 0;
+  transform: scaleY(0);
+  pointer-events: none;
+}
+
+#mobile-menu:not(.hidden) {
+  opacity: 1;
+  transform: scaleY(1);
+  pointer-events: auto;
+}
+
+#menu-btn span {
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 200px;
+  }
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide up animation (optional for closing) */
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Classes to apply animation */
+.mobile-slide-down {
+  animation: slideDown 0.3s ease forwards;
+}
+
+.mobile-slide-up {
+  animation: slideUp 0.3s ease forwards;
+}
+
+footer a:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}

@@ -10,13 +10,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./dist/output.css">
 </head>
 
 <body class="bg-[#0d1117] text-gray-300 font-inter">
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- navbar -->
     <nav class="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-purple-500/40">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-2 py-3 w-full">
             <div class="event flex-shrink-0">
@@ -56,7 +55,7 @@
                 </ul>
 
                 <div class="block">
-                    <button aria-label="Register button"
+                    <button aria-label="Register button" onclick="window.location.href='index.html?register=open'"
                         class="bg-purple-600 px-4 md:px-4 py-2 md:py-2.5 rounded-full hover:bg-purple-800 text-white font-semibold transition text-sm md:text-base w-full md:w-auto text-center">
                         Register Now
                     </button>
@@ -75,7 +74,7 @@
         </div>
     </nav>
 
-    <!-- ================= HERO / BANNER ================= -->
+    <!-- hero section -->
     <section
         class="relative flex flex-col justify-center items-center text-center min-h-screen px-6 md:px-12 bg-gradient-to-b from-purple-900 to-purple-700">
         <h1 class="text-5xl md:text-7xl font-orbitron font-bold text-white mb-4 leading-tight">
@@ -86,7 +85,7 @@
         </p>
     </section>
 
-    <!-- ================= ABOUT / STATS ================= -->
+    <!-- about the event -->
     <section id="about" class="py-20 px-6 md:px-16 relative bg-black/80">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl font-orbitron font-bold text-white mb-4">About TechWave 2025</h2>
@@ -95,7 +94,6 @@
                 panels, and networking.
             </p>
 
-            <!-- Stats -->
             <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <!-- Attendees -->
                 <div
@@ -141,7 +139,7 @@
         </div>
     </section>
 
-    <!-- ================= EVENT TIMELINE ================= -->
+    <!-- timeline of the event -->
     <section class="py-20 px-6 md:px-16 relative">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Event Timeline</h2>
@@ -169,7 +167,7 @@
         </div>
     </section>
 
-    <!-- ================= TEAM / ORGANIZERS ================= -->
+    <!-- organizers -->
     <section class="py-20 px-6 md:px-16 relative bg-black/80">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Meet the Team</h2>
@@ -204,7 +202,7 @@
         </div>
     </section>
 
-    <!-- ================= TESTIMONIALS ================= -->
+    <!-- testimonials -->
     <section class="py-20 px-6 md:px-16 relative">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl font-orbitron font-bold text-white mb-6">What Attendees Say</h2>
@@ -228,26 +226,26 @@
                     class="glass-card p-6 rounded-2xl border border-pink-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition shadow-lg shadow-pink-900/20">
                     <p class="text-gray-300 italic mb-4">"The keynote sessions inspired me to explore AI and blockchain
                         more seriously."</p>
-                    <h3 class="text-xl font-semibold text-pink-300">Raj Sharma</h3>
+                    <h3 class="text-xl font-semibold text-pink-300">Ajay Verma</h3>
                     <p class="text-gray-400 text-sm">Blockchain Enthusiast</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= CALL TO ACTION ================= -->
+    <!-- cta button -->
     <section class="py-20 bg-purple-900 text-center relative">
         <div class="max-w-4xl mx-auto relative z-10">
             <h2 class="text-4xl font-bold text-white mb-4">Ready to Join TechWave 2025?</h2>
             <p class="text-gray-300 mb-6">Don’t miss out on the premier tech conference of the year. Reserve your spot
                 now!</p>
-            <button class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
+            <button class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition" onclick="window.location.href='index.html?register=open'">
                 Register Now
             </button>
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- footer -->
     <footer class="bg-black/60 border-t border-purple-700/20 py-10 text-center text-gray-300">
         <div class="max-w-6xl mx-auto px-6">
             <h3 class="font-orbitron text-purple-400 text-2xl mb-3">TechWave 2025</h3>
@@ -264,92 +262,7 @@
         </div>
     </footer>
 
-    <!-- ================= JS FOR COUNTERS ================= -->
-    <script>
-        // Counter animation on scroll
-        const counters = document.querySelectorAll('.counter');
-
-        const counterObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = +counter.getAttribute('data-target');
-                    let count = 0;
-                    const increment = target / 200;
-
-                    const updateCounter = () => {
-                        count += increment;
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count);
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCounter();
-
-                    observer.unobserve(counter); // stop observing once animated
-                }
-            });
-        }, { threshold: 0.5 }); // animate when 50% visible
-
-        counters.forEach(counter => {
-            counterObserver.observe(counter);
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                document
-                    .querySelector(this.getAttribute("href"))
-                    .scrollIntoView({ behavior: "smooth" });
-            });
-        });
-
-        // Mobile menu toggle
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-
-        menuBtn.addEventListener("click", () => {
-            const spans = menuBtn.querySelectorAll("span");
-            spans[0].classList.toggle("rotate-45");
-            spans[1].classList.toggle("opacity-0");
-            spans[2].classList.toggle("-rotate-45");
-
-            if (mobileMenu.classList.contains("hidden")) {
-                mobileMenu.classList.remove("hidden");
-                mobileMenu.classList.remove("mobile-slide-up");
-                mobileMenu.classList.add("mobile-slide-down");
-            } else {
-                mobileMenu.classList.remove("mobile-slide-down");
-                mobileMenu.classList.add("mobile-slide-up");
-                mobileMenu.addEventListener("animationend", function hideMenu() {
-                    mobileMenu.classList.add("hidden");
-                    mobileMenu.removeEventListener("animationend", hideMenu);
-                });
-            }
-        });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll("#mobile-menu a").forEach((link) => {
-            link.addEventListener("click", () => {
-                mobileMenu.classList.remove("mobile-slide-down");
-                mobileMenu.classList.add("mobile-slide-up");
-
-                const spans = menuBtn.querySelectorAll("span");
-                spans[0].classList.remove("rotate-45");
-                spans[1].classList.remove("opacity-0");
-                spans[2].classList.remove("-rotate-45");
-
-                mobileMenu.addEventListener("animationend", function hideMenu() {
-                    mobileMenu.classList.add("hidden");
-                    mobileMenu.removeEventListener("animationend", hideMenu);
-                });
-            });
-        });
-    </script>
-
+    <script src="./js-client/about.js"></script>
 
 </body>
 

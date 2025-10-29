@@ -10,13 +10,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./dist/output.css">
 </head>
 
 <body class="bg-[#0d1117] text-gray-300 font-inter">
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- navigation bar -->
     <nav class="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-purple-500/40">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-2 py-3 w-full">
             <div class="event flex-shrink-0">
@@ -56,7 +56,7 @@
                 </ul>
 
                 <div class="block">
-                    <button aria-label="Register button"
+                    <button aria-label="Register button" onclick="window.location.href='index.html?register=open'"
                         class="bg-purple-600 px-4 md:px-4 py-2 md:py-2.5 rounded-full hover:bg-purple-800 text-white font-semibold transition text-sm md:text-base w-full md:w-auto text-center">
                         Register Now
                     </button>
@@ -75,7 +75,7 @@
         </div>
     </nav>
 
-    <!-- ================= HERO / BANNER ================= -->
+    <!-- sponsors of the event -->
     <section
         class="relative flex flex-col justify-center items-center text-center min-h-screen px-6 md:px-12 bg-gradient-to-b from-purple-900 to-purple-700">
         <h1 class="text-5xl md:text-7xl font-orbitron font-bold text-white mb-4 leading-tight">
@@ -91,59 +91,41 @@
             <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Our Sponsors</h2>
             <p class="text-gray-300 mb-12">Proud partners powering TechWave 2025</p>
 
-            <!-- Carousel Container -->
+            <!-- dynamic carousel -->
             <div class="relative overflow-hidden py-8">
-                <!-- Carousel Track -->
+                <!-- carousel track -->
                 <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
-                    <!-- Sponsor Items -->
-                    <div
-                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
-                        <img src="assets/Google.png" alt="Google" class="h-12 opacity-80">
-                    </div>
-                    <div
-                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
-                        <img src="assets/Flipkart.png" alt="Flipkart" class="h-12 opacity-80">
-                    </div>
-                    <div
-                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
-                        <img src="assets/Reliance-Jio.png" alt="Reliance-Jio" class="h-12 opacity-80">
-                    </div>
-                    <div
-                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
-                        <img src="assets/Zoho.png" alt="Zoho" class="h-12 opacity-80">
-                    </div>
-                    <div
-                        class="carousel-item flex-shrink-0 w-64 h-32 mx-4 flex items-center justify-center bg-white/5 backdrop-blur-md rounded-2xl shadow-lg shadow-purple-900/30 transition-all">
-                        <img src="assets/Infosys.png" alt="Infosys" class="h-12 opacity-80">
-                    </div>
+                    <!-- all the sponsors are listed here -->
                 </div>
 
-                <!-- Indicators -->
-                <div class="flex justify-center mt-8 space-x-2">
-                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator active"></div>
-                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
-                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
-                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
-                    <div class="w-3 h-3 rounded-full bg-gray-600 indicator"></div>
+                <!-- indicators -->
+                <div id="carousel-indicators" class="flex justify-center mt-8 space-x-2">
+                    <!-- dynamic indicators -->
                 </div>
             </div>
+
+            <!-- when no sponsors are added by me (admin) -->
+            <div id="no-sponsors" class="hidden text-center py-12">
+                <i class="fas fa-handshake text-4xl text-gray-500 mb-4"></i>
+                <p class="text-gray-400 text-lg">Our sponsors will be announced soon!</p>
+            </div>
+        </div>
         </div>
     </section>
 
-
-    <!-- ================= CALL TO ACTION ================= -->
+    <!-- cta section -->
     <section class="py-20 bg-purple-900 text-center relative">
         <div class="max-w-4xl mx-auto relative z-10">
             <h2 class="text-4xl font-bold text-white mb-4">Ready to Join TechWave 2025?</h2>
             <p class="text-gray-300 mb-6">Don’t miss out on the premier tech conference of the year. Reserve your spot
                 now!</p>
-            <button class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
+            <button class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition" onclick="window.location.href='index.html?register=open'">
                 Register Now
             </button>
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- footer -->
     <footer class="bg-black/60 border-t border-purple-700/20 py-10 text-center text-gray-300">
         <div class="max-w-6xl mx-auto px-6">
             <h3 class="font-orbitron text-purple-400 text-2xl mb-3">TechWave 2025</h3>
@@ -160,104 +142,8 @@
         </div>
     </footer>
 
-    <!-- ================= JS ================= -->
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
-            });
-        });
+    <script src="./js-client/sponsors.js"></script>
 
-        // Mobile menu toggle
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        menuBtn.addEventListener("click", () => {
-            const spans = menuBtn.querySelectorAll("span");
-            spans[0].classList.toggle("rotate-45");
-            spans[1].classList.toggle("opacity-0");
-            spans[2].classList.toggle("-rotate-45");
-
-            if (mobileMenu.classList.contains("hidden")) {
-                mobileMenu.classList.remove("hidden");
-            } else {
-                mobileMenu.classList.add("hidden");
-            }
-        });
-
-        document.querySelectorAll("#mobile-menu a").forEach(link => {
-            link.addEventListener("click", () => {
-                mobileMenu.classList.add("hidden");
-                const spans = menuBtn.querySelectorAll("span");
-                spans[0].classList.remove("rotate-45");
-                spans[1].classList.remove("opacity-0");
-                spans[2].classList.remove("-rotate-45");
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const track = document.getElementById('carousel-track');
-            const items = document.querySelectorAll('.carousel-item');
-            const indicators = document.querySelectorAll('.indicator');
-
-            let currentIndex = 0;
-            const itemWidth = items[0].offsetWidth + 32; // Width + margin
-
-            // Function to update carousel position
-            function updateCarousel() {
-                // Calculate the offset to center the current item
-                const offset = (track.offsetWidth / 2) - (itemWidth / 2) - (currentIndex * itemWidth);
-                track.style.transform = `translateX(${offset}px)`;
-
-                // Update indicators
-                indicators.forEach((indicator, index) => {
-                    if (index === currentIndex) {
-                        indicator.classList.add('active', 'bg-purple-500');
-                        indicator.classList.remove('bg-gray-600');
-                    } else {
-                        indicator.classList.remove('active', 'bg-purple-500');
-                        indicator.classList.add('bg-gray-600');
-                    }
-                });
-
-                // Update item styles for visual effect
-                items.forEach((item, index) => {
-                    if (index === currentIndex) {
-                        item.classList.add('scale-105', 'opacity-100', 'shadow-xl');
-                        item.classList.remove('scale-95', 'opacity-70');
-                    } else {
-                        item.classList.add('scale-95', 'opacity-70');
-                        item.classList.remove('scale-105', 'opacity-100', 'shadow-xl');
-                    }
-                });
-            }
-
-            // Indicator click
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', function () {
-                    currentIndex = index;
-                    updateCarousel();
-                });
-            });
-
-            // Auto-advance carousel
-            setInterval(function () {
-                currentIndex = (currentIndex + 1) % items.length;
-                updateCarousel();
-            }, 4000);
-
-            // Initialize carousel
-            updateCarousel();
-
-            // Handle window resize
-            window.addEventListener('resize', function () {
-                updateCarousel();
-            });
-        });
-
-
-    </script>
 </body>
 
 </html>

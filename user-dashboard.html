@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | TechWave 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #0f172a, #1e1b4b);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            backdrop-filter: blur(12px);
+        }
+
+        .year {
+            color: #d9aff7;
+            text-shadow: 1px 1px 5px #a546f3, -1px -1px 5px #a546f3;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-purple-500/40">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <div class="event flex-shrink-0">
+                <h1 class="event-name hover:cursor-pointer text-white font-orbitron">
+                    <span class="text-2xl md:text-3xl">TechWave</span>
+                    <span class="text-purple-300 text-base md:text-xl -ml-1 year">2025</span>
+                </h1>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-gray-300 hover:text-purple-300 transition">Home</a>
+                <button id="logout-btn"
+                    class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-white transition">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-8">
+        <!-- Welcome Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-orbitron text-white mb-4">Welcome to Your Dashboard</h1>
+            <p class="text-gray-300 text-lg">Manage your TechWave 2025 experience</p>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Registration Card -->
+            <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center">
+                        <i class="fas fa-user-check text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold">Registration Status</h3>
+                        <p class="text-green-400 text-sm">Confirmed ✓</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm">You're all set for TechWave 2025!</p>
+            </div>
+
+            <!-- Event Schedule -->
+            <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold">Event Schedule</h3>
+                        <p class="text-gray-400 text-sm">November 15-17, 2025</p>
+                    </div>
+                </div>
+                <button onclick="viewSchedule()"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition mt-2">
+                    View Schedule
+                </button>
+            </div>
+
+            <!-- Download Ticket -->
+            <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center">
+                        <i class="fas fa-ticket-alt text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold">Your Ticket</h3>
+                        <p class="text-gray-400 text-sm">Digital Pass</p>
+                    </div>
+                </div>
+                <button onclick="downloadTicket()"
+                    class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition mt-2">
+                    <i class="fas fa-download mr-2"></i>Download Ticket
+                </button>
+            </div>
+        </div>
+
+        <!-- User Details Section -->
+        <div class="glass-card rounded-2xl p-6 mb-8">
+            <h2 class="text-2xl font-orbitron text-white mb-6">Your Registration Details</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-purple-300 font-semibold mb-4">Personal Information</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="text-gray-400 text-sm">Full Name</label>
+                            <p class="text-white" id="user-name">-</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-400 text-sm">Email</label>
+                            <p class="text-white" id="user-email">-</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-400 text-sm">Registration Date</label>
+                            <p class="text-white" id="user-reg-date">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-purple-300 font-semibold mb-4">Location</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="text-gray-400 text-sm">Country</label>
+                            <p class="text-white" id="user-country">-</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-400 text-sm">State</label>
+                            <p class="text-white" id="user-state">-</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-400 text-sm">City</label>
+                            <p class="text-white" id="user-city">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Get current user from localStorage
+        function getCurrentUser() {
+            const users = JSON.parse(localStorage.getItem('registrations')) || [];
+            const currentUserEmail = localStorage.getItem('currentUser');
+
+            if (!currentUserEmail) {
+                window.location.href = 'index.html';
+                return null;
+            }
+
+            return users.find(user => user.email === currentUserEmail);
+        }
+
+        // Load user data
+        function loadUserData() {
+            const user = getCurrentUser();
+
+            if (user) {
+                // Set basic user info
+                document.getElementById('user-name').textContent = user.name;
+                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('user-country').textContent = user.country;
+                document.getElementById('user-state').textContent = user.state;
+                document.getElementById('user-city').textContent = user.city;
+
+                const regDate = new Date(user.registrationDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                document.getElementById('user-reg-date').textContent = regDate;
+
+                // ✅ ADD PAYMENT STATUS CHECK HERE
+                if (user.paymentStatus === 'Paid') {
+                    document.querySelector('#registration-status p').textContent = 'Confirmed ✓';
+                    document.querySelector('#registration-status p').className = 'text-green-400 text-sm';
+                } else {
+                    document.querySelector('#registration-status p').textContent = 'Payment Pending';
+                    document.querySelector('#registration-status p').className = 'text-yellow-400 text-sm';
+                }
+            }
+        }
+
+        // Download ticket function - FIXED: This function was missing
+        function downloadTicket() {
+            const user = getCurrentUser();
+            if (user) {
+                generateTicketPDF(user);
+            } else {
+                showNotification('Please log in to download your ticket', 'error');
+            }
+        }
+
+        // Enhanced PDF ticket generation
+        function generateTicketPDF(user) {
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Ticket dimensions
+                const pageWidth = 210;
+                const pageHeight = 297;
+
+                // Create background
+                doc.setFillColor(30, 27, 75);
+                doc.rect(0, 0, pageWidth, pageHeight, 'F');
+
+                // Header with pattern
+                doc.setFillColor(147, 51, 234);
+                doc.rect(0, 0, pageWidth, 50, 'F');
+
+                // TechWave logo/text
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(22);
+                doc.setFont('helvetica', 'bold');
+                doc.text('TECHWAVE 2025', pageWidth / 2, 30, { align: 'center' });
+
+                doc.setFontSize(10);
+                doc.text('PREMIER TECHNOLOGY CONFERENCE', pageWidth / 2, 38, { align: 'center' });
+
+                // Ticket content area
+                const contentX = 15;
+                const contentY = 70;
+                const contentWidth = pageWidth - 30;
+
+                // Main ticket box
+                doc.setDrawColor(147, 51, 234);
+                doc.setLineWidth(1);
+                doc.roundedRect(contentX, contentY, contentWidth, 180, 5, 5, 'S');
+
+                // User info section
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(16);
+                doc.setFont('helvetica', 'bold');
+                doc.text('CONFERENCE PASS', pageWidth / 2, contentY + 20, { align: 'center' });
+
+                // User details
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+                doc.text(`ATTENDEE: ${user.name.toUpperCase()}`, contentX + 10, contentY + 45);
+                doc.text(`EMAIL: ${user.email}`, contentX + 10, contentY + 60);
+                doc.text(`LOCATION: ${user.city}, ${user.state}`, contentX + 10, contentY + 75);
+
+                // Event details
+                doc.text('DATE: NOVEMBER 15-17, 2025', contentX + 10, contentY + 95);
+                doc.text('VENUE: NESCO IT PARK, GOREGAON (E)', contentX + 10, contentY + 110);
+                doc.text('MUMBAI, INDIA', contentX + 10, contentY + 125);
+
+                // Ticket type and status
+                doc.setFont('helvetica', 'bold');
+                doc.text('TICKET TYPE: GENERAL ADMISSION', contentX + 10, contentY + 145);
+
+                if (user.paymentStatus === 'Paid') {
+                    doc.setTextColor(34, 197, 94); // Green
+                    doc.text('STATUS: CONFIRMED & PAID', contentX + 10, contentY + 160);
+                } else {
+                    doc.setTextColor(234, 179, 8); // Yellow
+                    doc.text('STATUS: PAYMENT PENDING', contentX + 10, contentY + 160);
+                }
+
+                // Ticket ID
+                const ticketId = 'TW' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                doc.setTextColor(147, 51, 234);
+                doc.setFontSize(10);
+                doc.text(`TICKET ID: ${ticketId}`, pageWidth / 2, contentY + 175, { align: 'center' });
+
+                // Terms and conditions
+                doc.setTextColor(150, 150, 150);
+                doc.setFontSize(7);
+                const terms = [
+                    '• This ticket grants access to all 3 days of TechWave 2025 conference',
+                    '• Valid government-issued photo ID required for entry',
+                    '• Ticket is non-transferable and non-refundable',
+                    '• Conference schedule subject to change',
+                    '• For assistance: contact@techwave2025.com | +91 98765 43210'
+                ];
+
+                terms.forEach((term, index) => {
+                    doc.text(term, pageWidth / 2, contentY + 190 + (index * 4), { align: 'center' });
+                });
+
+                // Save PDF
+                doc.save(`TechWave-2025-Ticket-${user.name.replace(/\s+/g, '_')}.pdf`);
+
+                showNotification('🎫 Ticket downloaded successfully!', 'success');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                showNotification('Error generating ticket. Please try again.', 'error');
+            }
+        }
+
+        // Show notification function
+        function showNotification(message, type) {
+            // Remove any existing notifications
+            const existingNotifications = document.querySelectorAll('[data-notification]');
+            existingNotifications.forEach(notification => notification.remove());
+
+            const notification = document.createElement('div');
+            notification.setAttribute('data-notification', 'true');
+            notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white font-semibold z-50 ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`;
+            notification.textContent = message;
+
+            document.body.appendChild(notification);
+
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        // View schedule function
+        function viewSchedule() {
+            window.location.href = 'schedule.html';
+        }
+
+        // Logout function
+        document.getElementById('logout-btn').addEventListener('click', function () {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        });
+
+        // Check if user is logged in on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = 'index.html';
+            } else {
+                loadUserData();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

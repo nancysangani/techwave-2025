@@ -10,13 +10,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./dist/output.css">
 </head>
 
 <body class="bg-[#0d1117] text-gray-300 font-inter">
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- navbar -->
     <nav class="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-purple-500/40">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-2 py-3 w-full">
             <div class="event flex-shrink-0">
@@ -56,7 +55,7 @@
                 </ul>
 
                 <div class="block">
-                    <button aria-label="Register button"
+                    <button aria-label="Register button" onclick="window.location.href='index.html?register=open'"
                         class="bg-purple-600 px-4 md:px-4 py-2 md:py-2.5 rounded-full hover:bg-purple-800 text-white font-semibold transition text-sm md:text-base w-full md:w-auto text-center">
                         Register Now
                     </button>
@@ -75,7 +74,7 @@
         </div>
     </nav>
 
-    <!-- ================= HERO / BANNER ================= -->
+    <!-- speakers list -->
     <section
         class="relative flex flex-col justify-center items-center text-center min-h-[50vh] px-6 md:px-12 bg-gradient-to-b from-purple-900 to-purple-700">
         <h1 class="text-5xl md:text-7xl font-orbitron font-bold text-white mb-4 leading-tight">Speakers</h1>
@@ -84,63 +83,42 @@
         </p>
     </section>
 
-    <!-- ================= FILTER / TRACK BUTTONS ================= -->
     <section class="py-10 px-6 md:px-16 text-center bg-black/80">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-orbitron font-bold text-white mb-6">Filter by Track / Day</h2>
+            <h2 class="text-3xl font-orbitron font-bold text-white mb-6">Filter by Track</h2>
             <div class="flex justify-center gap-4 flex-wrap">
                 <button
                     class="filter-btn bg-purple-600 px-4 py-2 rounded-full hover:bg-purple-800 text-white font-semibold transition"
                     data-filter="all">All</button>
                 <button
                     class="filter-btn bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-800 text-white font-semibold transition"
-                    data-filter="ai">AI</button>
+                    data-filter="keynote sessions">Keynote Sessions</button>
                 <button
                     class="filter-btn bg-pink-600 px-4 py-2 rounded-full hover:bg-pink-800 text-white font-semibold transition"
-                    data-filter="web3">Web3</button>
+                    data-filter="panel discussions">Panel Discussions</button>
                 <button
                     class="filter-btn bg-cyan-600 px-4 py-2 rounded-full hover:bg-cyan-800 text-white font-semibold transition"
-                    data-filter="cloud">Cloud</button>
+                    data-filter="awards">Awards</button>
             </div>
         </div>
     </section>
 
-    <!-- ================= SPEAKERS GRID / CAROUSEL ================= -->
+    <!-- all the speakers grid -->
     <section class="py-20 px-6 md:px-16 relative">
         <div class="max-w-6xl mx-auto">
-            <div id="speakers-container"
-                class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-x-auto md:overflow-x-visible">
-                <!-- Speaker Card -->
-                <div class="speaker-card glass-card p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-lg shadow-purple-900/20 cursor-pointer transition transform hover:-translate-y-2"
-                    data-track="ai">
-                    <div class="w-32 h-32 mx-auto rounded-full bg-purple-600 mb-4"></div>
-                    <h3 class="text-xl font-semibold text-white text-center">Nancy Sangani</h3>
-                    <p class="text-purple-300 text-sm text-center">AI Track</p>
-                </div>
-                <div class="speaker-card glass-card p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-lg shadow-blue-900/20 cursor-pointer transition transform hover:-translate-y-2"
-                    data-track="web3">
-                    <div class="w-32 h-32 mx-auto rounded-full bg-blue-600 mb-4"></div>
-                    <h3 class="text-xl font-semibold text-white text-center">Rohan Patel</h3>
-                    <p class="text-blue-300 text-sm text-center">Web3 Track</p>
-                </div>
-                <div class="speaker-card glass-card p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-lg shadow-pink-900/20 cursor-pointer transition transform hover:-translate-y-2"
-                    data-track="cloud">
-                    <div class="w-32 h-32 mx-auto rounded-full bg-pink-600 mb-4"></div>
-                    <h3 class="text-xl font-semibold text-white text-center">Siya Mehta</h3>
-                    <p class="text-pink-300 text-sm text-center">Cloud Track</p>
-                </div>
-                <div class="speaker-card glass-card p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-lg shadow-cyan-900/20 cursor-pointer transition transform hover:-translate-y-2"
-                    data-track="ai">
-                    <div class="w-32 h-32 mx-auto rounded-full bg-cyan-600 mb-4"></div>
-                    <h3 class="text-xl font-semibold text-white text-center">Raj Sharma</h3>
-                    <p class="text-cyan-300 text-sm text-center">AI Track</p>
-                </div>
-                <!-- Add more speakers as needed -->
+            <div id="speakers-container" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- dynamic speakers added by me (admin) -->
+            </div>
+
+            <!-- if there are no speakers added -->
+            <div id="no-speakers" class="hidden text-center py-12">
+                <i class="fas fa-microphone-slash text-4xl text-gray-500 mb-4"></i>
+                <p class="text-gray-400 text-lg">No speakers found. Check back later!</p>
             </div>
         </div>
     </section>
 
-    <!-- ================= MODAL POPUP ================= -->
+    <!-- modal -->
     <div id="speaker-modal" class="fixed inset-0 bg-black/70 hidden justify-center items-center z-50">
         <div
             class="bg-gradient-to-r from-purple-900 via-purple-700 to-pink-700 bg-opacity-90 p-8 rounded-2xl max-w-lg w-full relative text-center">
@@ -149,25 +127,26 @@
             <div class="modal-content">
                 <div class="w-32 h-32 mx-auto rounded-full bg-purple-600 mb-4"></div>
                 <h3 class="text-2xl font-bold text-white mb-2">Speaker Name</h3>
-                <p class="text-gray-300 mb-4">Track / Day Info</p>
+                <p class="text-gray-300 mb-4">Track Info</p>
                 <p class="text-gray-300">Detailed bio and session information goes here.</p>
             </div>
         </div>
     </div>
 
-    <!-- ================= CALL TO ACTION ================= -->
+    <!-- cta button -->
     <section class="py-20 bg-purple-900 text-center relative">
         <div class="max-w-4xl mx-auto relative z-10">
             <h2 class="text-4xl font-bold text-white mb-4">Ready to Join TechWave 2025?</h2>
             <p class="text-gray-300 mb-6">Don’t miss out on the premier tech conference of the year. Reserve your spot
                 now!</p>
-            <button class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
+            <button class="bg-white text-purple-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition"
+                onclick="window.location.href='index.html?register=open'">
                 Register Now
             </button>
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- footer -->
     <footer class="bg-black/60 border-t border-purple-700/20 py-10 text-center text-gray-300">
         <div class="max-w-6xl mx-auto px-6">
             <h3 class="font-orbitron text-purple-400 text-2xl mb-3">TechWave 2025</h3>
@@ -184,92 +163,7 @@
         </div>
     </footer>
 
-    <!-- ================= JS ================= -->
-    <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        menuBtn.addEventListener("click", () => {
-            const spans = menuBtn.querySelectorAll("span");
-            spans[0].classList.toggle("rotate-45");
-            spans[1].classList.toggle("opacity-0");
-            spans[2].classList.toggle("-rotate-45");
-
-            mobileMenu.classList.toggle("hidden");
-        });
-
-        // Filter Speakers
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const speakers = document.querySelectorAll(".speaker-card");
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const filter = btn.getAttribute("data-filter");
-                speakers.forEach(card => {
-                    if (filter === "all" || card.getAttribute("data-track") === filter) {
-                        card.classList.remove("hidden");
-                    } else {
-                        card.classList.add("hidden");
-                    }
-                });
-            });
-        });
-
-        // Modal Popup
-        const speakerModal = document.getElementById("speaker-modal");
-        const modalClose = document.getElementById("modal-close");
-        const modalContent = speakerModal.querySelector(".modal-content");
-
-        speakers.forEach(card => {
-            card.addEventListener("click", () => {
-                const name = card.querySelector("h3").innerText;
-                const track = card.querySelector("p").innerText;
-                const bgColor = card.querySelector("div").className.split(' ')[2]; // extract color class
-                modalContent.querySelector("h3").innerText = name;
-                modalContent.querySelector("p").innerText = track;
-                modalContent.querySelector("div").className = `w-32 h-32 mx-auto rounded-full ${bgColor} mb-4`;
-                speakerModal.classList.remove("hidden");
-            });
-        });
-
-        modalClose.addEventListener("click", () => {
-            speakerModal.classList.add("hidden");
-        });
-
-        // Close modal when clicking outside
-        speakerModal.addEventListener("click", e => {
-            if (e.target === speakerModal) {
-                speakerModal.classList.add("hidden");
-            }
-        });
-
-        // Optional: Carousel / Horizontal scroll on mobile
-        const container = document.getElementById("speakers-container");
-        let isDown = false;
-        let startX, scrollLeft;
-
-        container.addEventListener('mousedown', (e) => {
-            isDown = true;
-            container.classList.add('cursor-grabbing');
-            startX = e.pageX - container.offsetLeft;
-            scrollLeft = container.scrollLeft;
-        });
-        container.addEventListener('mouseleave', () => {
-            isDown = false;
-            container.classList.remove('cursor-grabbing');
-        });
-        container.addEventListener('mouseup', () => {
-            isDown = false;
-            container.classList.remove('cursor-grabbing');
-        });
-        container.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 2;
-            container.scrollLeft = scrollLeft - walk;
-        });
-    </script>
+    <script src="./js-client/speakers.js"></script>
 
 </body>
 

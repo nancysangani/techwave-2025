@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | TechWave 2025</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../dist/output.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        'glass': 'rgba(255, 255, 255, 0.05)',
+                        'dark-bg': '#0d1117',
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                    screens: {
+                        'xs': '480px',
+                        '3xl': '1600px',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .year {
+            color: #d9aff7;
+            text-shadow: 1px 1px 5px #a546f3, -1px -1px 5px #a546f3;
+        }
+
+        #sidebar,
+        #mobile-sidebar {
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sticky-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            padding: 1rem 0;
+        }
+
+        main {
+            transition: margin-left 0.3s ease;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        button {
+            transition: all 0.2s ease;
+        }
+
+        input {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mobile-text {
+            color: #f1f5f9;
+        }
+
+        .mobile-text-light {
+            color: #cbd5e1;
+        }
+
+        .active-menu {
+            background-color: rgba(139, 92, 246, 0.2);
+            color: #c4b5fd;
+            border-left: 3px solid #8b5cf6;
+        }
+
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        .toast-show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-dark-bg text-gray-300 flex min-h-screen">
+    <aside id="sidebar"
+        class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-purple-900/95 to-purple-800/90 backdrop-blur-md border-r border-purple-700/40 p-6 hidden md:flex flex-col justify-between z-50">
+        <div>
+            <div class="flex items-center">
+                <div
+                    class="mb-10 w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center mr-3">
+                    <i class="fas fa-wave-square text-white"></i>
+                </div>
+                <h1 class="font-orbitron text-xl text-white mb-10">TechWave <span class="text-purple-300">2025</span>
+                </h1>
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg active-menu">
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="manage-events.html"
+                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                    <i class="fas fa-calendar-alt nav-icon"></i>
+                    <span>Manage Events</span>
+                </a>
+                <a href="manage-speakers.html"
+                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                    <i class="fas fa-microphone nav-icon"></i>
+                    <span>Manage Speakers</span>
+                </a>
+                <a href="manage-sponsors.html"
+                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                    <i class="fas fa-handshake nav-icon"></i>
+                    <span>Manage Sponsors</span>
+                </a>
+                <a href="manage-registrations.html"
+                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                    <i class="fas fa-user-plus nav-icon"></i>
+                    <span>Manage Registrations</span>
+                </a>
+            </nav>
+        </div>
+        <div>
+            <div class="flex items-center gap-3 mb-4 p-3 rounded-lg bg-purple-800/30">
+                <div
+                    class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                    <span class="text-white text-sm font-bold">A</span>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-white">Admin User</p>
+                    <p class="text-xs text-purple-300">techwave@admin.com</p>
+                </div>
+            </div>
+            <button
+                class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg w-full transition">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="sidebar-backdrop fixed inset-0 bg-black/20 z-40 hidden md:hidden"></div>
+
+    <div id="mobile-sidebar"
+        class="mobile-sidebar fixed top-0 left-0 h-full w-64 xs:w-72 sm:w-80 bg-gradient-to-b from-purple-900/95 to-purple-800/90 backdrop-blur-md border-r border-purple-700/40 p-6 flex flex-col justify-between z-50 transform -translate-x-full transition-transform duration-300 md:hidden">
+
+        <div>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center mr-3">
+                        <i class="fas fa-wave-square text-white"></i>
+                    </div>
+                    <h1 class="font-orbitron text-xl text-white">TechWave <span class="text-purple-300">2025</span></h1>
+                </div>
+
+                <button id="sidebar-close"
+                    class="sidebar-close p-2 rounded-lg bg-purple-700/80 hover:bg-purple-700 text-purple-200 transition">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <div class="mobile-sidebar-header mt-10">
+                <nav class="flex flex-col gap-1">
+                    <a href="dashboard.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg active-menu">
+                        <i class="fas fa-chart-line nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="manage-events.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-calendar-alt nav-icon"></i>
+                        <span>Manage Events</span>
+                    </a>
+                    <a href="manage-speakers.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-microphone nav-icon"></i>
+                        <span>Manage Speakers</span>
+                    </a>
+                    <a href="manage-sponsors.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-handshake nav-icon"></i>
+                        <span>Manage Sponsors</span>
+                    </a>
+                    <a href="manage-registrations.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-user-plus nav-icon"></i>
+                        <span>Manage Registrations</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        <div>
+            <div class="flex items-center gap-3 mb-4 p-3 rounded-lg bg-purple-800/30">
+                <div
+                    class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                    <span class="text-white text-sm font-bold">A</span>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-white">Admin User</p>
+                    <p class="text-xs text-purple-300">techwave@admin.com</p>
+                </div>
+            </div>
+            <button
+                class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg w-full transition">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-0 md:ml-64 w-full">
+        <div class="sticky-navbar md:hidden">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="hamburger-container">
+                            <button id="sidebar-toggle"
+                                class="flex flex-col gap-1.5 p-3 rounded-lg bg-purple-700/80 hover:bg-purple-700 focus:outline-none transition">
+                                <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
+                                <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
+                                <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
+                            </button>
+                        </div>
+                        <h1 class="event-name hover:cursor-pointer text-white font-orbitron">
+                            <span class="text-2xl md:text-3xl">TechWave</span>
+                            <span class="year text-base md:text-xl">2025</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14 3xl:p-16">
+            <div class="main-header">
+                <h2
+                    class="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-orbitron text-white mobile-text mb-6 md:mb-10">
+                    Dashboard
+                </h2>
+            </div>
+
+            <div
+                class="stats-grid grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-8 md:mb-12">
+                <div class="stats-card glass-card p-3 xs:p-4 sm:p-5 md:p-6 rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md shadow-lg shadow-purple-900/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.02] hover:border-purple-500/60 
+            hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:cursor-pointer"
+                    onclick="window.location.href='manage-events.html'">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <h3 class="text-sm xs:text-base sm:text-lg text-purple-300 mb-2 mobile-text-light truncate">
+                                Total Events</h3>
+                            <p id="total-events" class="text-xl xs:text-2xl sm:text-3xl font-bold mobile-text">0</p>
+                        </div>
+                        <div
+                            class="w-8 xs:w-9 sm:w-10 h-8 xs:h-9 sm:h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-calendar text-purple-400 text-sm xs:text-base"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-card glass-card p-3 xs:p-4 sm:p-5 md:p-6 rounded-2xl border border-blue-400/20 bg-white/5 backdrop-blur-md shadow-lg shadow-blue-900/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-500/60 
+            hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] hover:cursor-pointer"
+                    onclick="window.location.href='manage-speakers.html'">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <h3 class="text-sm xs:text-base sm:text-lg text-blue-300 mb-2 mobile-text-light truncate">
+                                Speakers</h3>
+                            <p id="total-speakers" class="text-xl xs:text-2xl sm:text-3xl font-bold mobile-text">0</p>
+                        </div>
+                        <div
+                            class="w-8 xs:w-9 sm:w-10 h-8 xs:h-9 sm:h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-microphone text-blue-400 text-sm xs:text-base"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-card glass-card p-3 xs:p-4 sm:p-5 md:p-6 rounded-2xl border border-pink-400/20 bg-white/5 backdrop-blur-md shadow-lg shadow-pink-900/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.02] hover:border-pink-500/60 
+            hover:shadow-[0_0_25px_rgba(236,72,153,0.3)] hover:cursor-pointer"
+                    onclick="window.location.href='manage-sponsors.html'">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <h3 class="text-sm xs:text-base sm:text-lg text-pink-300 mb-2 mobile-text-light truncate">
+                                Sponsors</h3>
+                            <p id="total-sponsors" class="text-xl xs:text-2xl sm:text-3xl font-bold mobile-text">0</p>
+                        </div>
+                        <div
+                            class="w-8 xs:w-9 sm:w-10 h-8 xs:h-9 sm:h-10 rounded-lg bg-pink-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-handshake text-pink-400 text-sm xs:text-base"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-card glass-card p-3 xs:p-4 sm:p-5 md:p-6 rounded-2xl border border-cyan-400/20 bg-white/5 backdrop-blur-md shadow-lg shadow-cyan-900/20 transition-all duration-300 ease-in-out transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.02] hover:border-cyan-500/60 
+            hover:shadow-[0_0_25px_rgba(34,211,238,0.3)] hover:cursor-pointer"
+                    onclick="window.location.href='manage-registrations.html'">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <h3 class="text-sm xs:text-base sm:text-lg text-cyan-300 mb-2 mobile-text-light truncate">
+                                Registrations</h3>
+                            <p id="total-registrations" class="text-xl xs:text-2xl sm:text-3xl font-bold mobile-text">0
+                            </p>
+                        </div>
+                        <div
+                            class="w-8 xs:w-9 sm:w-10 h-8 xs:h-9 sm:h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user-plus text-cyan-400 text-sm xs:text-base"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mb-4 md:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 xs:gap-4">
+                <h3 class="table-header text-lg xs:text-xl sm:text-2xl font-semibold text-white mobile-text">Recent
+                    Events</h3>
+                <button id="add-event-btn"
+                    class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 xs:py-2.5 px-4 rounded-lg transition w-full sm:w-auto flex items-center justify-center gap-2 min-h-[44px]">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Event</span>
+                </button>
+            </div>
+
+            <!-- recent events table, when events added by me (admin) will appear here -->
+            <div
+                class="table-container overflow-x-auto bg-white/5 backdrop-blur-md border border-purple-500/30 rounded-2xl p-3 xs:p-4 sm:p-5 md:p-6 shadow-lg shadow-purple-900/20">
+                <div class="table-wrapper">
+                    <table id="events-table" class="min-w-full text-left">
+                        <thead class="bg-purple-800/40 text-white uppercase text-xs xs:text-xs sm:text-sm">
+                            <tr class="border-b border-purple-400/20">
+                                <th
+                                    class="py-2 xs:py-3 px-2 xs:px-3 sm:px-4 text-xs xs:text-sm sm:text-base mobile-text-light font-medium">
+                                    Event
+                                    Name
+                                </th>
+                                <th
+                                    class="py-2 xs:py-3 px-2 xs:px-3 sm:px-4 text-xs xs:text-sm sm:text-base mobile-text-light font-medium">
+                                    Date
+                                </th>
+                                <th
+                                    class="py-2 xs:py-3 px-2 xs:px-3 sm:px-4 text-xs xs:text-sm sm:text-base mobile-text-light font-medium">
+                                    Location
+                                </th>
+                                <th
+                                    class="py-2 xs:py-3 px-2 xs:px-3 sm:px-4 text-xs xs:text-sm sm:text-base mobile-text-light font-medium">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- all the events rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h2 class="text-lg xs:text-xl sm:text-2xl font-semibold mt-8 xs:mt-10 mb-3 xs:mb-4 text-white">Speakers
+                Overview</h2>
+            <!-- speakers table, when speakers added by me (admin) will appear here -->
+            <div
+                class="table-container overflow-x-auto bg-white/5 backdrop-blur-md border border-purple-500/30 rounded-2xl p-3 xs:p-4 sm:p-5 md:p-6 shadow-lg shadow-purple-900/20">
+                <table class="w-full text-left text-xs xs:text-sm sm:text-base">
+                    <thead class="bg-purple-800/40 text-white uppercase text-xs xs:text-xs sm:text-sm">
+                        <tr class="border-b border-purple-400/20">
+                            <th
+                                class="py-2 xs:py-3 px-2 xs:px-3 sm:px-4 text-xs xs:text-sm sm:text-base mobile-text-light font-medium">
+                                Name
+                            </th>
+                            <th
+                                class="py-2 xs:py-3 px-2 xs:px-3 sm:px-4 text-xs xs:text-sm sm:text-base mobile-text-light font-medium">
+                                Designation
+                            </th>
+                            <th
+                                class="py-2 xs:py-3 px-2 xs:px-3 sm:px-4 text-xs xs:text-sm sm:text-base mobile-text-light font-medium">
+                                Topic
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboard-speakers-table" class="text-gray-200"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="event-modal"
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-3 xs:p-4 sm:p-5">
+        <div
+            class="modal-content bg-[#1a1f2e] rounded-2xl p-4 xs:p-5 sm:p-6 w-full max-w-xs xs:max-w-sm sm:max-w-md text-gray-300 border border-purple-500/30 shadow-2xl">
+            <h3 class="text-base xs:text-lg sm:text-xl font-semibold text-purple-400 mb-3 xs:mb-4">Add/Edit Event</h3>
+            <form id="event-form" class="flex flex-col gap-3">
+                <input type="text" id="event-name" placeholder="Event Name"
+                    class="p-2 xs:p-3 rounded-lg bg-white/5 border border-purple-400/30 text-gray-300 mobile-text focus:outline-none focus:ring-2 focus:ring-purple-500 min-h-[44px]"
+                    required>
+                <input type="date" id="event-date"
+                    class="p-2 xs:p-3 rounded-lg bg-white/5 border border-purple-400/30 text-gray-300 mobile-text focus:outline-none focus:ring-2 focus:ring-purple-500 min-h-[44px]"
+                    required>
+                <input type="text" id="event-location" placeholder="Location"
+                    class="p-2 xs:p-3 rounded-lg bg-white/5 border border-purple-400/30 text-gray-300 mobile-text focus:outline-none focus:ring-2 focus:ring-purple-500 min-h-[44px]"
+                    required>
+                <input id="event-time" type="text" placeholder="Time (e.g., 9:00 AM - 10:00 AM)" required
+                    class="p-3 rounded-lg bg-white/5 border border-purple-400/30 text-gray-300 focus:ring-2 focus:ring-purple-500 outline-none" />
+                <input id="event-speaker" type="text" placeholder="Speaker Name" required
+                    class="p-3 rounded-lg bg-white/5 border border-purple-400/30 text-gray-300 focus:ring-2 focus:ring-purple-500 outline-none" />
+                <div class="modal-buttons flex flex-col xs:flex-row justify-end gap-2 mt-3 xs:mt-4">
+                    <button type="button" id="close-modal"
+                        class="bg-gray-600 hover:bg-gray-700 text-white px-3 xs:px-4 py-2 rounded-lg transition min-h-[44px] flex items-center justify-center">Cancel</button>
+                    <button type="submit"
+                        class="bg-purple-600 hover:bg-purple-700 text-white px-3 xs:px-4 py-2 rounded-lg transition min-h-[44px] flex items-center justify-center">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification just when event is successfully added, edited or deleted by me -->
+    <div id="toast"
+        class="fixed bottom-5 right-5 hidden px-5 py-3 rounded-xl text-white font-medium shadow-lg backdrop-blur-md border border-purple-400/30 bg-purple-600/80 transition-all duration-500 transform translate-y-5 opacity-0 z-50">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js-admin/dashboard.js"></script>
+
+</body>
+
+</html>

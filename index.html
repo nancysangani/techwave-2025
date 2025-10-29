@@ -10,8 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@500;700&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="./dist/output.css">
 </head>
 
 <body class="overflow-x-hidden">
@@ -74,7 +74,7 @@
     </nav>
 
 
-    <!-- ================= HERO SECTION ================= -->
+    <!-- all the sections preview -->
     <section id="home"
         class="relative flex flex-col justify-center items-center text-center min-h-screen px-6 md:px-12">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-700/10 to-transparent blur-3xl">
@@ -89,7 +89,7 @@
             future.
         </p>
 
-        <!-- Countdown Timer -->
+        <!-- countdown for the event to begin -->
         <div id="countdown"
             class="flex flex-wrap justify-center gap-6 md:gap-10 text-white text-2xl font-mono mt-8 animate-fadeIn">
 
@@ -119,7 +119,7 @@
         </div>
 
 
-        <button
+        <button onclick="location.href='#about'"
             class="relative bg-purple-600 px-6 py-3 mt-10 rounded-full text-white font-semibold hover:bg-purple-800 transition-all after:content-[''] after:absolute after:inset-0 after:rounded-full after:border after:border-purple-400/40 after:blur after:opacity-70 after:-z-10">
             Explore More
         </button>
@@ -127,7 +127,7 @@
         <div class="absolute bottom-8 animate-bounce text-purple-400">↓</div>
     </section>
 
-    <!-- ================= ABOUT SECTION ================= -->
+    <!-- about section -->
     <section id="about" class="py-20 px-6 md:px-16 relative">
         <div
             class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-blue-600/10 to-transparent blur-2xl pointer-events-none">
@@ -167,60 +167,47 @@
         </div>
     </section>
 
-    <!-- ================= SPEAKERS SECTION ================= -->
-    <section id="speakers" class="py-20 px-6 md:px-16 relative">
+    <!-- speakers section -->
+    <section id="featured-speakers-section" class="py-20 px-6 md:px-16 relative">
         <div
             class="absolute inset-0 bg-gradient-to-tr from-purple-800/10 via-cyan-700/10 to-transparent blur-2xl pointer-events-none">
         </div>
-
         <div class="max-w-6xl mx-auto text-center relative z-10">
-            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Meet the Speakers</h2>
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Featured Speakers</h2>
             <p class="text-lg text-gray-300 mb-12">Leading voices in tech, sharing insights to shape tomorrow.</p>
 
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <!-- Speaker Card -->
-                <div
-                    class="group relative overflow-hidden rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md p-6 hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-purple-900/20">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-purple-800/30 opacity-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-1">Nancy Sangani</h3>
-                    <p class="text-purple-300 text-sm mb-3">AI Research Scientist</p>
-                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-all">
-                        Exploring next-gen AI models and human-machine collaboration.
-                    </p>
-                </div>
-
-                <!-- Speaker Card -->
-                <div
-                    class="group relative overflow-hidden rounded-2xl border border-blue-400/20 bg-white/5 backdrop-blur-md p-6 hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-blue-900/20">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-blue-800/30 opacity-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-1">Rohan Patel</h3>
-                    <p class="text-blue-300 text-sm mb-3">Cloud Solutions Architect</p>
-                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-all">
-                        Architecting scalable cloud systems for global innovation.
-                    </p>
-                </div>
-
-                <!-- Speaker Card -->
-                <div
-                    class="group relative overflow-hidden rounded-2xl border border-pink-400/20 bg-white/5 backdrop-blur-md p-6 hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-pink-900/20">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-pink-800/30 opacity-0 group-hover:opacity-100 transition-all">
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-1">Siya Mehta</h3>
-                    <p class="text-pink-300 text-sm mb-3">Blockchain Innovator</p>
-                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-all">
-                        Redefining finance and data ownership through Web3.
-                    </p>
-                </div>
+            <div id="featured-speakers-container" class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- speakers that I will add will appear here, I am using localStorage -->
             </div>
+
+            <a href="speakers.html"
+                class="inline-block mt-8 bg-purple-600 px-6 py-3 rounded-full text-white font-semibold hover:bg-purple-800 transition">
+                View All Speakers
+            </a>
         </div>
     </section>
 
-    <!-- ================= SCHEDULE PREVIEW SECTION ================= -->
+    <!-- events section -->
+    <section id="upcoming-events-section" class="py-20 px-6 md:px-16 relative">
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-blue-700/10 via-purple-700/10 to-transparent blur-2xl pointer-events-none">
+        </div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-orbitron font-bold text-white mb-6">Upcoming Events</h2>
+            <p class="text-gray-300 mb-12">Don't miss these exciting sessions at TechWave 2025.</p>
+
+            <div id="upcoming-events-container" class="grid md:grid-cols-3 gap-6">
+                <!-- events that I will add will appear here, I am using localStorage -->
+            </div>
+
+            <a href="schedule.html"
+                class="inline-block mt-8 bg-purple-600 px-6 py-3 rounded-full text-white font-semibold hover:bg-purple-800 transition">
+                View All Events - Day Wise
+            </a>
+        </div>
+    </section>
+
+    <!-- schedule section -->
     <section id="schedule-preview" class="py-20 px-6 md:px-16 relative">
         <div
             class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-blue-500/10 to-transparent blur-2xl pointer-events-none">
@@ -245,13 +232,14 @@
                     <p>Closing Ceremony & Awards</p>
                 </div>
             </div>
-            <button
+            <button onclick="window.location.href='schedule.html';"
                 class="mt-8 bg-purple-600 px-6 py-3 rounded-full text-white font-semibold hover:bg-purple-800 transition">View
-                Full Schedule</button>
+                Full Schedule
+            </button>
         </div>
     </section>
 
-    <!-- ================= SPONSORS SECTION ================= -->
+    <!-- sponsors section -->
     <section id="sponsors" class="py-20 relative overflow-hidden">
         <div
             class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-pink-500/10 to-transparent blur-2xl pointer-events-none">
@@ -297,7 +285,7 @@
         </div>
     </section>
 
-    <!-- ================= TESTIMONIALS SECTION ================= -->
+    <!-- testimonials section -->
     <section id="testimonials" class="py-20 px-6 md:px-16 relative">
         <div
             class="absolute inset-0 bg-gradient-to-tr from-purple-700/10 via-cyan-700/10 to-transparent blur-2xl pointer-events-none">
@@ -331,7 +319,7 @@
         </div>
     </section>
 
-    <!-- ================= CALL TO ACTION / REGISTER ================= -->
+    <!-- cta button -->
     <section class="py-20 bg-purple-900 text-center relative">
         <div
             class="absolute inset-0 bg-gradient-to-tr from-purple-800/20 via-pink-700/20 to-transparent blur-3xl pointer-events-none">
@@ -346,7 +334,7 @@
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- footer -->
     <footer class="bg-black/60 border-t border-purple-700/20 py-10 text-center text-gray-300">
         <div class="max-w-6xl mx-auto px-6">
             <h3 class="font-orbitron text-purple-400 text-2xl mb-3">TechWave 2025</h3>
@@ -362,6 +350,202 @@
             <p class="mt-6 text-gray-500 text-sm">© 2025 TechWave Conference. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Register Modal -->
+    <div id="registration-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-900 rounded-2xl p-6 w-11/12 max-w-md mx-4 border border-purple-500/30">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-orbitron text-purple-300">Register for TechWave 2025</h3>
+                <button id="close-registration-modal" class="text-gray-400 hover:text-white text-xl">&times;</button>
+            </div>
+
+            <form id="registration-form" class="space-y-4">
+                <div>
+                    <input type="text" id="full-name" placeholder="Full Name" required
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <div>
+                    <input type="email" id="email" placeholder="Email Address" required
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <div>
+                    <input type="text" id="country" placeholder="Country" required
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <div>
+                    <input type="text" id="state" placeholder="State" required
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <div>
+                    <input type="text" id="city" placeholder="City" required
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <div>
+                    <input type="password" id="password" placeholder="Password" required
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-lg transition mt-2">
+                    Sign Up
+                </button>
+            </form>
+
+            <div class="text-center mt-4">
+                <p class="text-gray-400 text-sm">
+                    Already registered?
+                    <button id="switch-to-login" class="text-purple-400 hover:text-purple-300 font-medium ml-1">
+                        Login here
+                    </button>
+                </p>
+            </div>
+
+            <p class="text-gray-400 text-sm mt-4 text-center">
+                By registering, you agree to our Terms of Service and Privacy Policy
+            </p>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-900 rounded-2xl p-6 w-11/12 max-w-md mx-4 border border-purple-500/30">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-orbitron text-purple-300">Login to Your Account</h3>
+                <button id="close-login-modal" class="text-gray-400 hover:text-white text-xl">&times;</button>
+            </div>
+
+            <form id="login-form" class="space-y-4">
+                <input type="email" id="login-email" placeholder="Email" required
+                    class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+                <input type="password" id="login-password" placeholder="Password" required
+                    class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+                <button type="submit"
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-lg transition">
+                    Login
+                </button>
+            </form>
+
+            <div class="text-center mt-4">
+                <p class="text-gray-400 text-sm">
+                    Don't have an account?
+                    <button id="switch-to-register" class="text-purple-400 hover:text-purple-300 font-medium ml-1">
+                        Register here
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-900 rounded-2xl p-6 w-11/12 max-w-md mx-4 border border-purple-500/30">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-orbitron text-purple-300">Complete Your Registration</h3>
+                <button id="close-payment-modal" class="text-gray-400 hover:text-white text-xl">&times;</button>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-4 p-4 bg-purple-900/30 rounded-lg">
+                    <div>
+                        <h4 class="text-white font-semibold">TechWave 2025 Conference Pass</h4>
+                        <p class="text-gray-400 text-sm">3-Day Full Access</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-white font-bold text-lg">₹4,999</p>
+                        <p class="text-gray-400 text-sm">INR</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="payment-form" class="space-y-4">
+                <div>
+                    <label class="text-gray-400 text-sm mb-2 block">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19"
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-gray-400 text-sm mb-2 block">Expiry Date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5"
+                            class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    </div>
+                    <div>
+                        <label class="text-gray-400 text-sm mb-2 block">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" maxlength="3"
+                            class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-gray-400 text-sm mb-2 block">Cardholder Name</label>
+                    <input type="text" id="cardholder-name" placeholder="John Doe"
+                        class="w-full px-4 py-3 bg-white/10 border border-purple-400/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition mt-4 flex items-center justify-center gap-2">
+                    <i class="fas fa-lock"></i>
+                    Pay ₹4,999
+                </button>
+            </form>
+
+            <div class="flex items-center justify-center gap-2 mt-4 text-gray-400 text-sm">
+                <i class="fas fa-shield-alt"></i>
+                <span>Secure payment encrypted</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Success Modal -->
+    <div id="payment-success-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-900 rounded-2xl p-8 w-11/12 max-w-md mx-4 border border-green-500/30 text-center">
+            <div class="text-green-400 text-6xl mb-4 animate-pulse">✓</div>
+            <h3 class="text-2xl font-orbitron text-green-400 mb-4">Payment Successful!</h3>
+
+            <div class="bg-green-900/20 rounded-lg p-4 mb-6">
+                <p class="text-white font-semibold">TechWave 2025 Conference Pass</p>
+                <p class="text-gray-300 text-sm">3-Day Full Access</p>
+                <p class="text-green-400 font-bold text-lg mt-2">₹4,999</p>
+            </div>
+
+            <div class="text-left bg-gray-800/30 rounded-lg p-4 mb-6">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-400">Transaction ID:</span>
+                    <span class="text-white font-mono" id="transaction-id">TW2025-</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-400">Date:</span>
+                    <span class="text-white" id="transaction-date"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Status:</span>
+                    <span class="text-green-400 font-semibold">Completed</span>
+                </div>
+            </div>
+
+            <p class="text-gray-300 mb-6">Welcome to TechWave 2025! Check your email for ticket and details.</p>
+
+            <div class="flex gap-3">
+                <button id="go-to-dashboard"
+                    class="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition">
+                    Go to Dashboard
+                </button>
+                <button id="download-ticket"
+                    class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition">
+                    Download Ticket
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
