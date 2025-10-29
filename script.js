@@ -118,17 +118,17 @@ function loadFeaturedSpeakers() {
   // Take first 3 speakers
   const featuredSpeakers = speakers.slice(0, 3);
 
-container.innerHTML = featuredSpeakers
-  .map((speaker) => {
-    return `
+  container.innerHTML = featuredSpeakers
+    .map((speaker) => {
+      return `
           <div class="group glass-card p-6 rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md hover:-translate-y-2 transition-all duration-300 shadow-lg shadow-purple-900/20">
               <h3 class="text-lg font-semibold text-white mb-1">${speaker.name}</h3>
               <p class="text-gray-300 text-sm mb-2">${speaker.designation}</p>
               <p class="text-purple-300 text-xs">${speaker.topic}</p>
           </div>
       `;
-  })
-  .join("");
+    })
+    .join("");
 }
 
 function loadUpcomingEvents() {
@@ -180,6 +180,7 @@ function loadUpcomingEvents() {
 // Initialize when page loads
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Homepage loaded - loading dynamic content");
+  initializeStaticData();
   loadDynamicContent();
 });
 
@@ -347,26 +348,6 @@ switchToRegister.addEventListener("click", () => {
 closeLoginModal.addEventListener("click", () => {
   loginModal.classList.add("hidden");
   document.body.style.overflow = "auto";
-});
-
-// Handle login form submission
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
-
-  const users = JSON.parse(localStorage.getItem("registrations")) || [];
-  const user = users.find((u) => u.email === email && u.password === password);
-
-  if (user) {
-    localStorage.setItem("currentUser", user.email);
-    loginModal.classList.add("hidden");
-    document.body.style.overflow = "auto";
-    window.location.href = "user-dashboard.html";
-  } else {
-    alert("Invalid email or password. Please try again.");
-  }
 });
 
 // Close modal when clicking outside
@@ -664,3 +645,79 @@ paymentSuccessModal.addEventListener("click", (e) => {
     document.body.style.overflow = "auto";
   }
 });
+
+// ========== STATIC DATA ==========
+const staticSpeakers = [
+  {
+    id: 1,
+    name: "Dr. Sarah Chen",
+    designation: "AI Research Lead at Google",
+    topic: "The Future of Artificial Intelligence",
+    photo: "",
+  },
+  {
+    id: 2,
+    name: "Rajiv Mehta",
+    designation: "Blockchain Architect at Ethereum Foundation",
+    topic: "Web3 and Decentralized Future",
+    photo: "",
+  },
+  {
+    id: 3,
+    name: "Priya Sharma",
+    designation: "Cloud Solutions Director at Microsoft",
+    topic: "Cloud Computing Revolution",
+    photo: "",
+  },
+];
+
+const staticEvents = [
+  {
+    id: 1,
+    name: "AI & Machine Learning Workshop",
+    date: "2025-11-15",
+    time: "10:00 AM - 12:00 PM",
+    speaker: "Dr. Sarah Chen",
+    location: "Main Hall A",
+  },
+  {
+    id: 2,
+    name: "Blockchain Revolution Panel",
+    date: "2025-11-16",
+    time: "2:00 PM - 4:00 PM",
+    speaker: "Rajiv Mehta",
+    location: "Conference Room B",
+  },
+  {
+    id: 3,
+    name: "Cloud Native Technologies",
+    date: "2025-11-17",
+    time: "11:00 AM - 1:00 PM",
+    speaker: "Priya Sharma",
+    location: "Tech Hall C",
+  },
+];
+
+// Initialize localStorage with static data if empty
+function initializeStaticData() {
+  if (
+    !localStorage.getItem("speakers") ||
+    JSON.parse(localStorage.getItem("speakers")).length === 0
+  ) {
+    localStorage.setItem("speakers", JSON.stringify(staticSpeakers));
+    console.log("✅ Static speakers data initialized");
+  }
+
+  if (
+    !localStorage.getItem("events") ||
+    JSON.parse(localStorage.getItem("events")).length === 0
+  ) {
+    localStorage.setItem("events", JSON.stringify(staticEvents));
+    console.log("✅ Static events data initialized");
+  }
+
+  if (!localStorage.getItem("registrations")) {
+    localStorage.setItem("registrations", JSON.stringify([]));
+    console.log("✅ Registrations array initialized");
+  }
+}
