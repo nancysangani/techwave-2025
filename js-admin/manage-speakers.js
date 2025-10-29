@@ -2,7 +2,6 @@ if (!localStorage.getItem("speakers")) {
   localStorage.setItem("speakers", JSON.stringify([]));
 }
 
-
 const staticSpeakers = [
   {
     id: 1,
@@ -61,7 +60,6 @@ const sidebarBackdrop = document.getElementById("sidebar-backdrop");
 
 function toggleSidebar() {
   mobileSidebar.classList.toggle("-translate-x-full");
-  // show/hide backdrop only on mobile widths
   if (window.innerWidth <= 768) {
     sidebarBackdrop.style.display = mobileSidebar.classList.contains(
       "-translate-x-full"
@@ -80,11 +78,11 @@ sidebarToggle?.addEventListener("click", toggleSidebar);
 sidebarClose?.addEventListener("click", toggleSidebar);
 sidebarBackdrop?.addEventListener("click", toggleSidebar);
 
-// Speaker CRUD & Search
+// Speaker CRUD & Search - USE THE SAME DATA
 const STORAGE_KEY = "speakers";
-let speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-let currentDisplayed = []; // array of { speaker, idx } representing rows currently shown
-let editIndex = null; // actual index in speakers array when editing
+let speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; // This now loads the static data
+let currentDisplayed = [];
+let editIndex = null;
 
 const tableBody = document.querySelector("#speakers-table tbody");
 const searchBox = document.getElementById("search-box");
@@ -95,12 +93,15 @@ const form = document.getElementById("speaker-form");
 const nameInput = document.getElementById("speaker-name");
 const desigInput = document.getElementById("speaker-designation");
 const topicInput = document.getElementById("speaker-topic");
+const trackInput = document.getElementById("speaker-track"); // Add this
 const photoInput = document.getElementById("speaker-photo");
 const photoPreview = document.getElementById("photo-preview");
 
 // this render function accepts optional list of {speaker, idx}
 function renderSpeakers(list = null) {
-  // if list not provided, show all speakers (map to {speaker, idx})
+  // Reload from localStorage to ensure we have the latest data
+  speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
   if (!list) {
     currentDisplayed = speakers.map((sp, idx) => ({ speaker: sp, idx }));
   } else {
@@ -126,19 +127,25 @@ function renderSpeakers(list = null) {
 
   currentDisplayed.forEach(({ speaker, idx }) => {
     const tr = document.createElement("tr");
-    tr.className = "border-b border-purple-400/20";
+    tr.className =
+      "border-b border-purple-400/20 hover:bg-purple-500/5 transition";
     const photoCell = speaker.photo
-      ? `<img src="${escapeHtml(speaker.photo)}" alt="photo" class="avatar">`
-      : `<div class="w-9 h-9 bg-white/6 rounded-md flex items-center justify-center text-xs text-gray-400">N/A</div>`;
+      ? `<img src="${escapeHtml(speaker.photo)}" alt="${escapeHtml(
+          speaker.name
+        )}" class="w-9 h-9 rounded-full object-cover">`
+      : `<div class="w-9 h-9 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">${speaker.name.charAt(
+          0
+        )}</div>`;
+
     tr.innerHTML = `
           <td class="py-3 px-2 sm:px-4 align-middle">${photoCell}</td>
-          <td class="py-3 px-2 sm:px-4 align-middle">${escapeHtml(
+          <td class="py-3 px-2 sm:px-4 align-middle text-white font-medium">${escapeHtml(
             speaker.name
           )}</td>
-          <td class="py-3 px-2 sm:px-4 align-middle">${escapeHtml(
+          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(
             speaker.designation
           )}</td>
-          <td class="py-3 px-2 sm:px-4 align-middle">${escapeHtml(
+          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(
             speaker.topic
           )}</td>
           <td class="py-3 px-2 sm:px-4 align-middle">
@@ -164,9 +171,6 @@ function renderSpeakers(list = null) {
       removeSpeaker(idx);
     });
   });
-
-  // persist
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(speakers));
 }
 
 // escaping HTML
@@ -194,10 +198,10 @@ function openEdit(idx) {
   const sp = speakers[idx];
   if (!sp) return;
   editIndex = idx;
-  nameInput.value = sp.name;
-  desigInput.value = sp.designation;
-  topicInput.value = sp.topic;
-  document.getElementById("speaker-track").value = sp.track || "";
+  nameInput.value = sp.name || "";
+  desigInput.value = sp.designation || "";
+  topicInput.value = sp.topic || "";
+  trackInput.value = sp.track || "";
   photoInput.value = sp.photo || "";
   if (sp.photo) {
     photoPreview.src = sp.photo;
@@ -218,26 +222,39 @@ function closeModal() {
   photoPreview.classList.add("hidden");
 }
 
-// add/update speaker
+// add/update speaker - PRESERVE ALL FIELDS
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = nameInput.value.trim();
   const designation = desigInput.value.trim();
   const topic = topicInput.value.trim();
-  const track = document.getElementById("speaker-track").value.trim();
+  const track = trackInput.value.trim();
   const photo = photoInput.value.trim();
 
   if (!name || !designation || !topic || !track) {
-    alert("Please fill name, designation and topic.");
+    alert("Please fill name, designation, topic, and track.");
     return;
   }
 
+  // Reload speakers to get current state
+  speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
   if (editIndex === null) {
-    // create
-    speakers.push({ name, designation, topic, track, photo: photo || "" });
+    // create - include all fields
+    const newSpeaker = {
+      id: speakers.length > 0 ? Math.max(...speakers.map((s) => s.id)) + 1 : 1,
+      name,
+      designation,
+      topic,
+      track,
+      photo: photo || "",
+      bio: `${name} is a renowned expert in ${topic}.`, // Default bio
+    };
+    speakers.push(newSpeaker);
   } else {
-    // update
+    // update - preserve existing fields
     speakers[editIndex] = {
+      ...speakers[editIndex], // Keep existing fields like id, bio
       name,
       designation,
       topic,
@@ -246,7 +263,8 @@ form.addEventListener("submit", (e) => {
     };
   }
 
-  // reset search so user sees full list
+  // Save and reload
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(speakers));
   searchBox.value = "";
   renderSpeakers();
   closeModal();
@@ -256,7 +274,7 @@ form.addEventListener("submit", (e) => {
 function removeSpeaker(idx) {
   if (!confirm("Delete this speaker?")) return;
   speakers.splice(idx, 1);
-  // re-run current search (if any) so display is consistent
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(speakers));
   if (searchBox.value.trim()) {
     performSearch(searchBox.value);
   } else {
@@ -303,7 +321,6 @@ photoInput.addEventListener("input", () => {
     photoPreview.classList.add("hidden");
     return;
   }
-  // quick validation: if it looks like a url, show it; otherwise hide
   if (/^https?:\/\//i.test(url)) {
     photoPreview.src = url;
     photoPreview.classList.remove("hidden");
