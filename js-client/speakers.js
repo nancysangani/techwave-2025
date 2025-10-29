@@ -10,6 +10,56 @@ menuBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
 });
 
+const staticSpeakers = [
+  {
+    id: 1,
+    name: "Dr. Sarah Chen",
+    designation: "AI Research Lead at Google",
+    topic: "The Future of Artificial Intelligence",
+    photo: "",
+    track: "keynote sessions",
+    bio: "Leading AI researcher with 10+ years of experience in machine learning and neural networks. Published over 50 research papers in top AI conferences.",
+  },
+  {
+    id: 2,
+    name: "Rajiv Mehta",
+    designation: "Blockchain Architect at Ethereum Foundation",
+    topic: "Web3 and Decentralized Future",
+    photo: "",
+    track: "panel discussions",
+    bio: "Blockchain expert specializing in smart contracts and decentralized applications. Contributor to Ethereum core development since 2018.",
+  },
+  {
+    id: 3,
+    name: "Priya Sharma",
+    designation: "Cloud Solutions Director at Microsoft",
+    topic: "Cloud Computing Revolution",
+    photo: "",
+    track: "keynote sessions",
+    bio: "Cloud infrastructure specialist with expertise in Azure, AWS, and hybrid cloud solutions. Helped migrate 100+ enterprises to cloud platforms.",
+  },
+  {
+    id: 4,
+    name: "Marcus Johnson",
+    designation: "Cybersecurity Expert at CyberShield",
+    topic: "Next-Gen Security Threats",
+    photo: "",
+    track: "panel discussions",
+    bio: "Cybersecurity veteran with focus on threat intelligence and zero-trust architectures. Former white-hat hacker turned security consultant.",
+  },
+];
+
+// Initialize with static data if empty
+function initializeSpeakersData() {
+  const existingSpeakers = JSON.parse(localStorage.getItem("speakers")) || [];
+  if (existingSpeakers.length === 0) {
+    localStorage.setItem("speakers", JSON.stringify(staticSpeakers));
+    console.log("✅ Static speakers data initialized");
+  }
+}
+
+initializeSpeakersData();
+
 // Load and display speakers from localStorage
 function loadSpeakers() {
   const speakersData = JSON.parse(localStorage.getItem("speakers")) || [];
