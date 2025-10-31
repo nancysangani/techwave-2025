@@ -88,6 +88,33 @@ document.querySelectorAll("#mobile-menu a").forEach((link) => {
   });
 });
 
+const staticEvents = [
+  {
+    id: 1,
+    name: "AI & Machine Learning Workshop",
+    date: "2025-11-15",
+    time: "10:00 AM - 12:00 PM",
+    speaker: "Dr. Sarah Chen",
+    location: "Main Hall A",
+  },
+  {
+    id: 2,
+    name: "Blockchain Revolution Panel",
+    date: "2025-11-16",
+    time: "2:00 PM - 4:00 PM",
+    speaker: "Rajiv Mehta",
+    location: "Conference Room B",
+  },
+  {
+    id: 3,
+    name: "Cloud Native Technologies",
+    date: "2025-11-17",
+    time: "11:00 AM - 1:00 PM",
+    speaker: "Priya Sharma",
+    location: "Tech Hall C",
+  },
+];
+
 const staticSpeakers = [
   {
     id: 1,
@@ -137,7 +164,7 @@ function initializeStaticData() {
     console.log("✅ Static speakers data initialized");
   }
 
-  // Initialize events (your existing code)
+  // Initialize events
   if (
     !localStorage.getItem("events") ||
     JSON.parse(localStorage.getItem("events")).length === 0
@@ -146,7 +173,7 @@ function initializeStaticData() {
     console.log("✅ Static events data initialized");
   }
 
-  // Initialize registrations (your existing code)
+  // Initialize registrations
   if (!localStorage.getItem("registrations")) {
     localStorage.setItem("registrations", JSON.stringify([]));
     console.log("✅ Registrations array initialized");
@@ -247,7 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("Homepage loaded - loading dynamic content");
   initializeStaticData();
   loadDynamicContent();
-  loadFeaturedSpeakers();
 });
 
 // Check if URL has register parameter and open modal
@@ -711,46 +737,3 @@ paymentSuccessModal.addEventListener("click", (e) => {
     document.body.style.overflow = "auto";
   }
 });
-
-const staticEvents = [
-  {
-    id: 1,
-    name: "AI & Machine Learning Workshop",
-    date: "2025-11-15",
-    time: "10:00 AM - 12:00 PM",
-    speaker: "Dr. Sarah Chen",
-    location: "Main Hall A",
-  },
-  {
-    id: 2,
-    name: "Blockchain Revolution Panel",
-    date: "2025-11-16",
-    time: "2:00 PM - 4:00 PM",
-    speaker: "Rajiv Mehta",
-    location: "Conference Room B",
-  },
-  {
-    id: 3,
-    name: "Cloud Native Technologies",
-    date: "2025-11-17",
-    time: "11:00 AM - 1:00 PM",
-    speaker: "Priya Sharma",
-    location: "Tech Hall C",
-  },
-];
-
-// Initialize localStorage with static data if empty
-function initializeStaticData() {
-  if (
-    !localStorage.getItem("events") ||
-    JSON.parse(localStorage.getItem("events")).length === 0
-  ) {
-    localStorage.setItem("events", JSON.stringify(staticEvents));
-    console.log("✅ Static events data initialized");
-  }
-
-  if (!localStorage.getItem("registrations")) {
-    localStorage.setItem("registrations", JSON.stringify([]));
-    console.log("✅ Registrations array initialized");
-  }
-}
