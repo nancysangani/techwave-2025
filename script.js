@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("Homepage loaded - loading dynamic content");
   initializeStaticData();
   loadDynamicContent();
+  loadFeaturedSpeakers();
 });
 
 // Check if URL has register parameter and open modal
