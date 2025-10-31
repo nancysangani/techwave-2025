@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="TechWave 2025 Sponsor Management - Handle sponsor information, contributions, and partnership details for the conference.">
     <title>Manage Sponsors | TechWave 2025</title>
 
     <!-- Fonts & Icons -->
@@ -122,7 +124,7 @@
                     <p class="text-xs text-purple-300">techwave@admin.com</p>
                 </div>
             </div>
-            <button
+            <button aria-label="Logout button"
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg w-full transition">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
@@ -145,7 +147,7 @@
                     <h1 class="font-orbitron text-xl text-white">TechWave <span class="text-purple-300">2025</span></h1>
                 </div>
 
-                <button id="sidebar-close"
+                <button id="sidebar-close" aria-label="Button to close the sidebar"
                     class="sidebar-close p-2 rounded-lg bg-purple-700/80 hover:bg-purple-700 text-purple-200 transition">
                     <i class="fas fa-times text-lg"></i>
                 </button>
@@ -197,7 +199,7 @@
                     <p class="text-xs text-purple-300">techwave@admin.com</p>
                 </div>
             </div>
-            <button
+            <button aria-label="Logout button"
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg w-full transition">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
@@ -212,7 +214,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <div class="hamburger-container">
-                            <button id="sidebar-toggle"
+                            <button id="sidebar-toggle" aria-label="sidebar toggle for small screens"
                                 class="flex flex-col gap-1.5 p-3 rounded-lg bg-purple-700/80 hover:bg-purple-700 focus:outline-none transition">
                                 <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
                                 <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
@@ -269,9 +271,9 @@
                 <input type="url" id="sponsor-logo" placeholder="Logo URL (e.g., https://example.com/logo.png)"
                     class="w-full px-4 py-2 bg-white/10 border border-purple-400/30 rounded-lg text-white focus:outline-none">
                 <div class="flex justify-end gap-3 pt-3">
-                    <button type="button" id="close-modal"
+                    <button type="button" id="close-modal" aria-label="Cancel button"
                         class="px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-700 text-white">Cancel</button>
-                    <button type="submit"
+                    <button type="submit" aria-label="To save the details added in form"
                         class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white">Save</button>
                 </div>
             </form>

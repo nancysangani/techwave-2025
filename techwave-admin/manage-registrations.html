@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="TechWave 2025 Registration Management - View and manage attendee registrations, payments, and participant data.">
     <title>Manage Registrations | TechWave 2025</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;500;700&display=swap"
@@ -121,7 +123,7 @@
                     <p class="text-xs text-purple-300">techwave@admin.com</p>
                 </div>
             </div>
-            <button
+            <button aria-label="Logout button"
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg w-full transition">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
@@ -144,7 +146,7 @@
                     <h1 class="font-orbitron text-xl text-white">TechWave <span class="text-purple-300">2025</span></h1>
                 </div>
 
-                <button id="sidebar-close"
+                <button id="sidebar-close" aria-label="Button to close the sidebar"
                     class="sidebar-close p-2 rounded-lg bg-purple-700/80 hover:bg-purple-700 text-purple-200 transition">
                     <i class="fas fa-times text-lg"></i>
                 </button>
@@ -196,7 +198,7 @@
                     <p class="text-xs text-purple-300">techwave@admin.com</p>
                 </div>
             </div>
-            <button
+            <button aria-label="Logout button"
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg w-full transition">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
@@ -211,7 +213,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <div class="hamburger-container">
-                            <button id="sidebar-toggle"
+                            <button id="sidebar-toggle" aria-label="sidebar toggle for small screens"
                                 class="flex flex-col gap-1.5 p-3 rounded-lg bg-purple-700/80 hover:bg-purple-700 focus:outline-none transition">
                                 <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
                                 <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
@@ -233,7 +235,7 @@
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
             <input id="search-registration" type="text" placeholder="Search registrations..."
                 class="w-full sm:w-1/2 px-4 py-2 rounded-lg bg-white/10 border border-purple-400/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
-            <button id="add-registration-btn"
+            <button id="add-registration-btn" aria-label="Button for adding the registrations"
                 class="px-5 py-2.5 bg-purple-600 hover:bg-purple-700 rounded-xl text-white font-medium transition w-full sm:w-auto">
                 <i class="fas fa-plus mr-2"></i>Add Registration
             </button>
@@ -278,9 +280,9 @@
                     class="w-full px-4 py-2 bg-white/10 border border-purple-400/30 rounded-lg text-white focus:outline-none">
 
                 <div class="flex justify-end gap-3 pt-3">
-                    <button type="button" id="close-modal"
+                    <button type="button" id="close-modal" aria-label="Cancel button"
                         class="px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-700 text-white">Cancel</button>
-                    <button type="submit" id="submit-btn"
+                    <button type="submit" id="submit-btn" aria-label="Button to save the details added in form"
                         class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white">Save</button>
                 </div>
             </form>

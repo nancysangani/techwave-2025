@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description"
+        content="Manage TechWave 2025 speakers - Add, edit, and organize conference speakers, their topics, and session details.">
     <title>Manage Speakers | TechWave 2025</title>
 
     <link
@@ -134,7 +136,7 @@
                     <p class="text-xs text-purple-300">techwave@admin.com</p>
                 </div>
             </div>
-            <button
+            <button aria-label="Logout button"
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg w-full transition">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
@@ -157,7 +159,7 @@
                     <h1 class="font-orbitron text-xl text-white">TechWave <span class="text-purple-300">2025</span></h1>
                 </div>
 
-                <button id="sidebar-close"
+                <button id="sidebar-close" aria-label="To close the sidebar"
                     class="sidebar-close p-2 rounded-lg bg-purple-700/80 hover:bg-purple-700 text-purple-200 transition">
                     <i class="fas fa-times text-lg"></i>
                 </button>
@@ -209,7 +211,7 @@
                     <p class="text-xs text-purple-300">techwave@admin.com</p>
                 </div>
             </div>
-            <button
+            <button aria-label="Logout button"
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg w-full transition">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span>
@@ -224,7 +226,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <div class="hamburger-container">
-                            <button id="sidebar-toggle"
+                            <button id="sidebar-toggle" aria-label="sidebar toggle for small screens"
                                 class="flex flex-col gap-1.5 p-3 rounded-lg bg-purple-700/80 hover:bg-purple-700 focus:outline-none transition">
                                 <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
                                 <span class="w-6 h-0.5 bg-purple-200 transition-all"></span>
@@ -245,7 +247,7 @@
 
             <!-- Add + Search -->
             <div class="flex flex-col sm:flex-row justify-between gap-4 mb-6">
-                <button id="add-speaker-btn"
+                <button id="add-speaker-btn" aria-label="Button to add the speaker details"
                     class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center justify-center gap-2 w-full sm:w-auto">
                     <i class="fas fa-plus"></i> Add Speaker
                 </button>
@@ -294,9 +296,9 @@
                 </div>
 
                 <div class="flex justify-end gap-2 mt-4">
-                    <button type="button" id="close-modal"
+                    <button type="button" id="close-modal" aria-label="Cancel button"
                         class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition">Cancel</button>
-                    <button type="submit"
+                    <button type="submit" aria-label="To save the details aded in form"
                         class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition">Save</button>
                 </div>
             </form>
