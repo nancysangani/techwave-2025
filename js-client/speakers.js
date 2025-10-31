@@ -10,6 +10,18 @@ menuBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
 });
 
+// Get speakers from localStorage (same source as admin)
+function getSpeakers() {
+  try {
+    const speakers = JSON.parse(localStorage.getItem("speakers")) || [];
+    console.log("Loaded speakers from localStorage:", speakers.length);
+    return speakers;
+  } catch (error) {
+    console.error("Error loading speakers from localStorage:", error);
+    return [];
+  }
+}
+
 // Load and display speakers
 function loadSpeakers() {
   const container = document.getElementById("speakers-container");
@@ -22,7 +34,9 @@ function loadSpeakers() {
 
   container.innerHTML = "";
 
-  if (staticSpeakers.length === 0) {
+  const speakers = getSpeakers();
+
+  if (speakers.length === 0) {
     container.classList.add("hidden");
     noSpeakers.classList.remove("hidden");
     return;
@@ -31,12 +45,13 @@ function loadSpeakers() {
   container.classList.remove("hidden");
   noSpeakers.classList.add("hidden");
 
-  staticSpeakers.forEach((speaker) => {
+  speakers.forEach((speaker) => {
     const track = speaker.track?.toLowerCase() || "general";
     const trackColors = {
-      "keynote sessions": { bg: "bg-blue-600", text: "text-blue-300" },
-      "panel discussions": { bg: "bg-pink-600", text: "text-pink-300" },
-      awards: { bg: "bg-cyan-600", text: "text-cyan-300" },
+      ai: { bg: "bg-blue-600", text: "text-blue-300" },
+      web3: { bg: "bg-pink-600", text: "text-pink-300" },
+      cloud: { bg: "bg-cyan-600", text: "text-cyan-300" },
+      "emerging tech": { bg: "bg-purple-600", text: "text-purple-300" },
       general: { bg: "bg-gray-600", text: "text-gray-300" },
     };
 
