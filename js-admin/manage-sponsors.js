@@ -1,3 +1,40 @@
+// Initialize with static data if no sponsors exist
+if (!localStorage.getItem("sponsors")) {
+  const staticSponsors = [
+    {
+      name: "Swiggy",
+      contribution: "₹5,00,000",
+      email: "partnership@techcorp.com",
+      logo: "https://images.seeklogo.com/logo-png/34/2/swiggy-logo-png_seeklogo-348257.png"
+    },
+    {
+      name: "Paytm",
+      contribution: "₹3,50,000", 
+      email: "sponsor@innovatelabs.com",
+      logo: "https://images.seeklogo.com/logo-png/30/2/paytm-logo-png_seeklogo-305549.png"
+    },
+    {
+      name: "Meta",
+      contribution: "₹2,00,000",
+      email: "events@datadynamo.ai",
+      logo: "https://images.seeklogo.com/logo-png/42/2/meta-icon-new-facebook-2021-logo-png_seeklogo-424014.png"
+    },
+    {
+      name: "Infosys",
+      contribution: "₹4,00,000",
+      email: "marketing@cloudnexus.com", 
+      logo: "https://images.seeklogo.com/logo-png/28/2/infosys-limited-logo-png_seeklogo-289643.png"
+    },
+    {
+      name: "Zoho",
+      contribution: "₹6,00,000",
+      email: "hello@futuretech.vc",
+      logo: "https://images.seeklogo.com/logo-png/27/2/zoho-logo-png_seeklogo-274112.png"
+    }
+  ];
+  localStorage.setItem("sponsors", JSON.stringify(staticSponsors));
+}
+
 // Sidebar toggle (Mobile)
 const sidebarToggle = document.getElementById("sidebar-toggle");
 const sidebarClose = document.getElementById("sidebar-close");
