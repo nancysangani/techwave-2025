@@ -305,11 +305,3 @@ photoInput.addEventListener("input", () => {
 
 // initial render
 renderSpeakers();
-
-// keep sidebar state consistent on resize
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    sidebarBackdrop.style.display = "none";
-    mobileSidebar.classList.add("-translate-x-full");
-  }
-});
