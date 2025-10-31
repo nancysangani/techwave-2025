@@ -15,7 +15,6 @@
 
     <style>
         body {
-            background: #0d1117;
             font-family: "Inter", sans-serif;
             overflow-x: hidden;
         }
@@ -29,40 +28,26 @@
             text-shadow: 1px 1px 5px #a546f3, -1px -1px 5px #a546f3;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .active-menu {
-            background-color: rgba(139, 92, 246, 0.18);
-            color: #c4b5fd;
-            border-left: 3px solid #8b5cf6;
-        }
-
         #sidebar {
-            transition: all .25s ease;
+            transition: all 0.3s ease;
         }
 
-        .sidebar-backdrop {
-            display: none;
+        .sticky-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            padding: 1rem 0;
         }
 
-        @media (max-width:768px) {
-            .mobile-sidebar {
-                width: 85vw;
-                z-index: 60;
-            }
-
-            .sidebar-backdrop {
-                display: block;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 50;
-            }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
 
         .avatar {
             width: 36px;
@@ -70,10 +55,29 @@
             border-radius: 8px;
             object-fit: cover;
         }
+
+        .active-menu {
+            background-color: rgba(139, 92, 246, 0.2);
+            color: #c4b5fd;
+            border-left: 3px solid #8b5cf6;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-sidebar {
+                width: 280px;
+                z-index: 100;
+            }
+
+            .sidebar-backdrop {
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+                display: none;
+            }
+        }
     </style>
 </head>
 
-<body class="text-gray-300 flex min-h-screen">
+<body class="bg-[#0d1117] text-gray-300 flex min-h-screen">
 
     <aside id="sidebar"
         class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-purple-900/95 to-purple-800/90 backdrop-blur-md border-r border-purple-700/40 p-6 hidden md:flex flex-col justify-between z-50">
