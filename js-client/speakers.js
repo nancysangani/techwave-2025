@@ -48,11 +48,10 @@ function loadSpeakers() {
   speakers.forEach((speaker) => {
     const track = speaker.track?.toLowerCase() || "general";
     const trackColors = {
-      ai: { bg: "bg-blue-600", text: "text-blue-300" },
-      web3: { bg: "bg-pink-600", text: "text-pink-300" },
-      cloud: { bg: "bg-cyan-600", text: "text-cyan-300" },
-      "emerging tech": { bg: "bg-purple-600", text: "text-purple-300" },
-      general: { bg: "bg-gray-600", text: "text-gray-300" },
+      'keynote sessions': { bg: "bg-blue-600", text: "text-blue-300" },
+      'panel discussions': { bg: "bg-pink-600", text: "text-pink-300" },
+      'awards': { bg: "bg-cyan-600", text: "text-cyan-300" },
+      'general': { bg: "bg-gray-600", text: "text-gray-300" },
     };
 
     const colorClass = trackColors[track] || trackColors.general;
