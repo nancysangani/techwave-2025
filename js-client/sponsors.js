@@ -212,7 +212,7 @@ function initializeCarousel() {
   }
 
   // Auto-advance every 3 seconds
-  autoAdvanceInterval = setInterval(nextSlide, 3000);
+  autoAdvanceInterval = setInterval(nextSlide, 1000);
 
   // Pause on hover
   if (track) {
@@ -220,7 +220,7 @@ function initializeCarousel() {
       clearInterval(autoAdvanceInterval);
     });
     track.addEventListener("mouseleave", () => {
-      autoAdvanceInterval = setInterval(nextSlide, 3000);
+      autoAdvanceInterval = setInterval(nextSlide, 1000);
     });
   }
 
