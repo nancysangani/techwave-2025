@@ -51,15 +51,16 @@ menuBtn.addEventListener("click", () => {
 });
 
 // Get speakers function
+// Get speakers function
 function getSpeakers() {
   try {
     const localSpeakers = JSON.parse(localStorage.getItem("speakers")) || [];
     if (localSpeakers.length === 0) {
-      return staticSpeakersData;
+      return staticSpeakers;
     }
     return localSpeakers;
   } catch (error) {
-    return staticSpeakersData;
+    return staticSpeakers;
   }
 }
 
