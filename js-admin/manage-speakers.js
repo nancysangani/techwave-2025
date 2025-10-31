@@ -1,5 +1,44 @@
+// Initialize with static data if no speakers exist
 if (!localStorage.getItem("speakers")) {
-  localStorage.setItem("speakers", JSON.stringify([]));
+  const staticSpeakers = [
+    {
+      id: 1,
+      name: "Dr. Sarah Chen",
+      designation: "AI Research Lead at Google",
+      topic: "The Future of Artificial Intelligence",
+      photo: "",
+      track: "keynote sessions",
+      bio: "Leading AI researcher with 10+ years of experience in machine learning and neural networks. Published over 50 research papers in top AI conferences.",
+    },
+    {
+      id: 2,
+      name: "Rajiv Mehta",
+      designation: "Blockchain Architect at Ethereum Foundation",
+      topic: "Web3 and Decentralized Future",
+      photo: "",
+      track: "panel discussions",
+      bio: "Blockchain expert specializing in smart contracts and decentralized applications. Contributor to Ethereum core development since 2018.",
+    },
+    {
+      id: 3,
+      name: "Priya Sharma",
+      designation: "Cloud Solutions Director at Microsoft",
+      topic: "Cloud Computing Revolution",
+      photo: "",
+      track: "keynote sessions",
+      bio: "Cloud infrastructure specialist with expertise in Azure, AWS, and hybrid cloud solutions. Helped migrate 100+ enterprises to cloud platforms.",
+    },
+    {
+      id: 4,
+      name: "Marcus Johnson",
+      designation: "Host of the Event",
+      topic: "Awards and Closing Ceremony",
+      photo: "",
+      track: "awards",
+      bio: "Hosted 250+ Events",
+    },
+  ];
+  localStorage.setItem("speakers", JSON.stringify(staticSpeakers));
 }
 
 // Sidebar toggle
@@ -11,11 +50,15 @@ const sidebarBackdrop = document.getElementById("sidebar-backdrop");
 function toggleSidebar() {
   mobileSidebar.classList.toggle("-translate-x-full");
   if (window.innerWidth <= 768) {
-    sidebarBackdrop.style.display = mobileSidebar.classList.contains("-translate-x-full")
+    sidebarBackdrop.style.display = mobileSidebar.classList.contains(
+      "-translate-x-full"
+    )
       ? "none"
       : "block";
   }
-  document.body.style.overflow = mobileSidebar.classList.contains("-translate-x-full")
+  document.body.style.overflow = mobileSidebar.classList.contains(
+    "-translate-x-full"
+  )
     ? "auto"
     : "hidden";
 }
@@ -47,7 +90,7 @@ const photoPreview = document.getElementById("photo-preview");
 function renderSpeakers(list = null) {
   // Reload from localStorage to ensure we have the latest data
   speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  
+
   if (!list) {
     currentDisplayed = speakers.map((sp, idx) => ({ speaker: sp, idx }));
   } else {
@@ -73,16 +116,27 @@ function renderSpeakers(list = null) {
 
   currentDisplayed.forEach(({ speaker, idx }) => {
     const tr = document.createElement("tr");
-    tr.className = "border-b border-purple-400/20 hover:bg-purple-500/5 transition";
+    tr.className =
+      "border-b border-purple-400/20 hover:bg-purple-500/5 transition";
     const photoCell = speaker.photo
-      ? `<img src="${escapeHtml(speaker.photo)}" alt="${escapeHtml(speaker.name)}" class="w-9 h-9 rounded-full object-cover">`
-      : `<div class="w-9 h-9 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">${speaker.name.charAt(0)}</div>`;
-    
+      ? `<img src="${escapeHtml(speaker.photo)}" alt="${escapeHtml(
+          speaker.name
+        )}" class="w-9 h-9 rounded-full object-cover">`
+      : `<div class="w-9 h-9 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">${speaker.name.charAt(
+          0
+        )}</div>`;
+
     tr.innerHTML = `
           <td class="py-3 px-2 sm:px-4 align-middle">${photoCell}</td>
-          <td class="py-3 px-2 sm:px-4 align-middle text-white font-medium">${escapeHtml(speaker.name)}</td>
-          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(speaker.designation)}</td>
-          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(speaker.topic)}</td>
+          <td class="py-3 px-2 sm:px-4 align-middle text-white font-medium">${escapeHtml(
+            speaker.name
+          )}</td>
+          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(
+            speaker.designation
+          )}</td>
+          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(
+            speaker.topic
+          )}</td>
           <td class="py-3 px-2 sm:px-4 align-middle">
             <div class="flex gap-2">
               <button class="edit-btn bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg text-white text-sm" data-idx="${idx}"><i class="fas fa-pen"></i> Edit</button>
@@ -177,13 +231,13 @@ form.addEventListener("submit", (e) => {
   if (editIndex === null) {
     // create - include all fields
     const newSpeaker = {
-      id: speakers.length > 0 ? Math.max(...speakers.map(s => s.id)) + 1 : 1,
+      id: speakers.length > 0 ? Math.max(...speakers.map((s) => s.id)) + 1 : 1,
       name,
       designation,
       topic,
       track,
       photo: photo || "",
-      bio: `${name} is a renowned expert in ${topic}.` // Default bio
+      bio: `${name} is a renowned expert in ${topic}.`, // Default bio
     };
     speakers.push(newSpeaker);
   } else {
@@ -194,7 +248,7 @@ form.addEventListener("submit", (e) => {
       designation,
       topic,
       track,
-      photo: photo || ""
+      photo: photo || "",
     };
   }
 
@@ -219,7 +273,9 @@ function removeSpeaker(idx) {
 
 // search that returns list of {speaker, idx}
 function performSearch(q) {
-  const query = String(q || "").toLowerCase().trim();
+  const query = String(q || "")
+    .toLowerCase()
+    .trim();
   if (!query) {
     renderSpeakers();
     return;
