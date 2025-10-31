@@ -1,3 +1,66 @@
+// Static sponsors data for all devices
+const staticSponsorsData = [
+  {
+    name: "Swiggy",
+    contribution: "₹5,00,000",
+    email: "partnership@swiggy.com",
+    logo: "https://images.seeklogo.com/logo-png/34/2/swiggy-logo-png_seeklogo-348257.png"
+  },
+  {
+    name: "Paytm",
+    contribution: "₹3,50,000", 
+    email: "sponsor@paytm.com",
+    logo: "https://images.seeklogo.com/logo-png/30/2/paytm-logo-png_seeklogo-305549.png"
+  },
+  {
+    name: "Meta",
+    contribution: "₹2,00,000",
+    email: "events@meta.com",
+    logo: "https://images.seeklogo.com/logo-png/42/2/meta-icon-new-facebook-2021-logo-png_seeklogo-424014.png"
+  },
+  {
+    name: "Infosys",
+    contribution: "₹4,00,000",
+    email: "marketing@infosys.com", 
+    logo: "https://images.seeklogo.com/logo-png/28/2/infosys-limited-logo-png_seeklogo-289643.png"
+  },
+  {
+    name: "Zoho",
+    contribution: "₹6,00,000",
+    email: "hello@zoho.com",
+    logo: "https://images.seeklogo.com/logo-png/27/2/zoho-logo-png_seeklogo-274112.png"
+  }
+];
+
+function getSponsors() {
+  try {
+    const localSponsors = JSON.parse(localStorage.getItem("sponsors")) || [];
+    if (localSponsors.length === 0) {
+      return staticSponsorsData;
+    }
+    return localSponsors;
+  } catch (error) {
+    return staticSponsorsData;
+  }
+}
+
+function loadSponsors() {
+  const container = document.getElementById("sponsors-container");
+  if (!container) return;
+
+  const sponsors = getSponsors();
+  container.innerHTML = sponsors.map(sponsor => `
+    <div class="sponsor-card glass-card p-6 rounded-2xl text-center transition transform hover:-translate-y-2">
+      <img src="${sponsor.logo}" alt="${sponsor.name}" class="w-24 h-24 mx-auto mb-4 object-contain">
+      <h3 class="text-lg font-semibold text-white mb-2">${sponsor.name}</h3>
+      <p class="text-purple-300 text-sm mb-1">${sponsor.contribution}</p>
+      <p class="text-gray-400 text-xs">${sponsor.email}</p>
+    </div>
+  `).join('');
+}
+
+document.addEventListener("DOMContentLoaded", loadSponsors);
+
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {

@@ -1,3 +1,43 @@
+// Static speakers data for all devices
+const staticSpeakers = [
+  {
+    id: 1,
+    name: "Dr. Sarah Chen",
+    designation: "AI Research Lead at Google",
+    topic: "The Future of Artificial Intelligence",
+    photo: "",
+    track: "keynote sessions",
+    bio: "Leading AI researcher with 10+ years of experience in machine learning and neural networks. Published over 50 research papers in top AI conferences.",
+  },
+  {
+    id: 2,
+    name: "Rajiv Mehta",
+    designation: "Blockchain Architect at Ethereum Foundation",
+    topic: "Web3 and Decentralized Future",
+    photo: "",
+    track: "panel discussions",
+    bio: "Blockchain expert specializing in smart contracts and decentralized applications. Contributor to Ethereum core development since 2018.",
+  },
+  {
+    id: 3,
+    name: "Priya Sharma",
+    designation: "Cloud Solutions Director at Microsoft",
+    topic: "Cloud Computing Revolution",
+    photo: "",
+    track: "keynote sessions",
+    bio: "Cloud infrastructure specialist with expertise in Azure, AWS, and hybrid cloud solutions. Helped migrate 100+ enterprises to cloud platforms.",
+  },
+  {
+    id: 4,
+    name: "Marcus Johnson",
+    designation: "Host of the Event",
+    topic: "Awards and Closing Ceremony",
+    photo: "",
+    track: "awards",
+    bio: "Hosted 250+ Events",
+  },
+];
+
 // Mobile Menu Toggle
 const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
@@ -10,15 +50,16 @@ menuBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
 });
 
-// Get speakers from localStorage (same source as admin)
+// Get speakers function
 function getSpeakers() {
   try {
-    const speakers = JSON.parse(localStorage.getItem("speakers")) || [];
-    console.log("Loaded speakers from localStorage:", speakers.length);
-    return speakers;
+    const localSpeakers = JSON.parse(localStorage.getItem("speakers")) || [];
+    if (localSpeakers.length === 0) {
+      return staticSpeakersData;
+    }
+    return localSpeakers;
   } catch (error) {
-    console.error("Error loading speakers from localStorage:", error);
-    return [];
+    return staticSpeakersData;
   }
 }
 
@@ -48,10 +89,10 @@ function loadSpeakers() {
   speakers.forEach((speaker) => {
     const track = speaker.track?.toLowerCase() || "general";
     const trackColors = {
-      'keynote sessions': { bg: "bg-blue-600", text: "text-blue-300" },
-      'panel discussions': { bg: "bg-pink-600", text: "text-pink-300" },
-      'awards': { bg: "bg-cyan-600", text: "text-cyan-300" },
-      'general': { bg: "bg-gray-600", text: "text-gray-300" },
+      "keynote sessions": { bg: "bg-blue-600", text: "text-blue-300" },
+      "panel discussions": { bg: "bg-pink-600", text: "text-pink-300" },
+      awards: { bg: "bg-cyan-600", text: "text-cyan-300" },
+      general: { bg: "bg-gray-600", text: "text-gray-300" },
     };
 
     const colorClass = trackColors[track] || trackColors.general;
