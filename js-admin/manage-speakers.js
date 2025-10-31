@@ -1,45 +1,45 @@
-// Initialize with static data if no speakers exist
-if (!localStorage.getItem("speakers")) {
-  const staticSpeakers = [
-    {
-      id: 1,
-      name: "Dr. Sarah Chen",
-      designation: "AI Research Lead at NeuroTech",
-      topic: "The Future of Neural Networks",
-      track: "AI",
-      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-      bio: "Dr. Sarah Chen leads AI research at NeuroTech, focusing on neural network architectures and their practical applications."
-    },
-    {
-      id: 2,
-      name: "Marcus Johnson",
-      designation: "Blockchain Architect at ChainCore",
-      topic: "Web3 and Decentralized Future",
-      track: "Web3",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-      bio: "Marcus Johnson is a blockchain architect with over 10 years of experience in decentralized systems and Web3 technologies."
-    },
-    {
-      id: 3,
-      name: "Priya Sharma",
-      designation: "Cloud Solutions Director at CloudScale",
-      topic: "Multi-Cloud Strategies for Enterprises",
-      track: "Cloud",
-      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-      bio: "Priya Sharma specializes in cloud architecture and helps enterprises optimize their multi-cloud infrastructure and costs."
-    },
-    {
-      id: 4,
-      name: "Alex Rodriguez",
-      designation: "CTO at QuantumLeap",
-      topic: "Quantum Computing in Everyday Applications",
-      track: "Emerging Tech",
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-      bio: "Alex Rodriguez is pioneering quantum computing applications that bridge the gap between theoretical research and practical business solutions."
-    }
-  ];
-  localStorage.setItem("speakers", JSON.stringify(staticSpeakers));
-}
+// Always load static data (for development) - comment out for production
+const staticSpeakers = [
+  {
+    id: 1,
+    name: "Dr. Sarah Chen",
+    designation: "AI Research Lead at NeuroTech",
+    topic: "The Future of Neural Networks",
+    track: "AI",
+    photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+    bio: "Dr. Sarah Chen leads AI research at NeuroTech, focusing on neural network architectures and their practical applications."
+  },
+  {
+    id: 2,
+    name: "Marcus Johnson",
+    designation: "Blockchain Architect at ChainCore",
+    topic: "Web3 and Decentralized Future",
+    track: "Web3",
+    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+    bio: "Marcus Johnson is a blockchain architect with over 10 years of experience in decentralized systems and Web3 technologies."
+  },
+  {
+    id: 3,
+    name: "Priya Sharma",
+    designation: "Cloud Solutions Director at CloudScale",
+    topic: "Multi-Cloud Strategies for Enterprises",
+    track: "Cloud",
+    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+    bio: "Priya Sharma specializes in cloud architecture and helps enterprises optimize their multi-cloud infrastructure and costs."
+  },
+  {
+    id: 4,
+    name: "Alex Rodriguez",
+    designation: "CTO at QuantumLeap",
+    topic: "Quantum Computing in Everyday Applications",
+    track: "Emerging Tech",
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+    bio: "Alex Rodriguez is pioneering quantum computing applications that bridge the gap between theoretical research and practical business solutions."
+  }
+];
+
+// For development: always reset to static data
+localStorage.setItem("speakers", JSON.stringify(staticSpeakers));
 
 // Sidebar toggle
 const sidebarToggle = document.getElementById("sidebar-toggle");
