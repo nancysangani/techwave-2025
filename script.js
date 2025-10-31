@@ -273,6 +273,7 @@ function loadUpcomingEvents() {
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Homepage loaded - loading dynamic content");
   initializeStaticData();
+  loadFeaturedSpeakers();
   loadDynamicContent();
 });
 
