@@ -269,7 +269,7 @@ registrationForm.addEventListener("submit", (e) => {
     city: document.getElementById("city").value,
     password: document.getElementById("password").value,
     registrationDate: new Date().toISOString(),
-    paymentStatus: "Pending", // Add payment status
+    paymentStatus: "Pending",
   };
 
   // Save to localStorage
