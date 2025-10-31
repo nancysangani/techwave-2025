@@ -1,204 +1,314 @@
-// Mobile Menu Toggle
-const menuBtn = document.getElementById("menu-btn");
-const mobileMenu = document.getElementById("mobile-menu");
-menuBtn.addEventListener("click", () => {
-  const spans = menuBtn.querySelectorAll("span");
-  spans[0].classList.toggle("rotate-45");
-  spans[1].classList.toggle("opacity-0");
-  spans[2].classList.toggle("-rotate-45");
-
-  mobileMenu.classList.toggle("hidden");
-});
-
-// Static speakers data
-const staticSpeakers = [
-  {
-    id: 1,
-    name: "Dr. Sarah Chen",
-    designation: "AI Research Lead at Google",
-    topic: "The Future of Artificial Intelligence",
-    photo: "",
-    track: "keynote sessions",
-    bio: "Leading AI researcher with 10+ years of experience in machine learning and neural networks. Published over 50 research papers in top AI conferences.",
-  },
-  {
-    id: 2,
-    name: "Rajiv Mehta",
-    designation: "Blockchain Architect at Ethereum Foundation",
-    topic: "Web3 and Decentralized Future",
-    photo: "",
-    track: "panel discussions",
-    bio: "Blockchain expert specializing in smart contracts and decentralized applications. Contributor to Ethereum core development since 2018.",
-  },
-  {
-    id: 3,
-    name: "Priya Sharma",
-    designation: "Cloud Solutions Director at Microsoft",
-    topic: "Cloud Computing Revolution",
-    photo: "",
-    track: "keynote sessions",
-    bio: "Cloud infrastructure specialist with expertise in Azure, AWS, and hybrid cloud solutions. Helped migrate 100+ enterprises to cloud platforms.",
-  },
-  {
-    id: 4,
-    name: "Marcus Johnson",
-    designation: "Host of the Event",
-    topic: "Awards and Closing Ceremony",
-    photo: "",
-    track: "awards",
-    bio: "Hosted 250+ Events",
-  },
-];
-
-// Load and display speakers
-function loadSpeakers() {
-  const container = document.getElementById("speakers-container");
-  const noSpeakers = document.getElementById("no-speakers");
-
-  if (!container) {
-    console.error("Speakers container not found!");
-    return;
-  }
-
-  container.innerHTML = "";
-
-  if (staticSpeakers.length === 0) {
-    container.classList.add("hidden");
-    noSpeakers.classList.remove("hidden");
-    return;
-  }
-
-  container.classList.remove("hidden");
-  noSpeakers.classList.add("hidden");
-
-  staticSpeakers.forEach((speaker) => {
-    const track = speaker.track?.toLowerCase() || "general";
-    const trackColors = {
-      "keynote sessions": { bg: "bg-blue-600", text: "text-blue-300" },
-      "panel discussions": { bg: "bg-pink-600", text: "text-pink-300" },
-      awards: { bg: "bg-cyan-600", text: "text-cyan-300" },
-      general: { bg: "bg-gray-600", text: "text-gray-300" },
-    };
-
-    const colorClass = trackColors[track] || trackColors.general;
-
-    const speakerCard = document.createElement("div");
-    speakerCard.className = `speaker-card glass-card p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-lg cursor-pointer transition transform hover:-translate-y-2`;
-    speakerCard.setAttribute("data-track", track);
-
-    const avatarHtml = speaker.photo
-      ? `<img src="${speaker.photo}" alt="${speaker.name}" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 ${colorClass.bg}">`
-      : `<div class="w-32 h-32 mx-auto rounded-full ${
-          colorClass.bg
-        } mb-4 flex items-center justify-center text-white text-4xl font-bold">${speaker.name.charAt(
-          0
-        )}</div>`;
-
-    speakerCard.innerHTML = `
-      ${avatarHtml}
-      <h3 class="text-xl font-semibold text-white text-center">${
-        speaker.name
-      }</h3>
-      <p class="text-sm text-gray-300 text-center mb-2">${
-        speaker.designation || "Industry Expert"
-      }</p>
-      <p class="${
-        colorClass.text
-      } text-sm text-center font-medium capitalize">${track}</p>
-    `;
-
-    speakerCard.addEventListener("click", () =>
-      openSpeakerModal(speaker, colorClass)
-    );
-    container.appendChild(speakerCard);
-  });
-
-  // Setup filters AFTER speakers are loaded
-  setupFilters();
+// Initialize with static data if no speakers exist
+if (!localStorage.getItem("speakers")) {
+  const staticSpeakers = [
+    {
+      id: 1,
+      name: "Dr. Sarah Chen",
+      designation: "AI Research Lead at NeuroTech",
+      topic: "The Future of Neural Networks",
+      track: "AI",
+      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+      bio: "Dr. Sarah Chen leads AI research at NeuroTech, focusing on neural network architectures and their practical applications."
+    },
+    {
+      id: 2,
+      name: "Marcus Johnson",
+      designation: "Blockchain Architect at ChainCore",
+      topic: "Web3 and Decentralized Future",
+      track: "Web3",
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+      bio: "Marcus Johnson is a blockchain architect with over 10 years of experience in decentralized systems and Web3 technologies."
+    },
+    {
+      id: 3,
+      name: "Priya Sharma",
+      designation: "Cloud Solutions Director at CloudScale",
+      topic: "Multi-Cloud Strategies for Enterprises",
+      track: "Cloud",
+      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+      bio: "Priya Sharma specializes in cloud architecture and helps enterprises optimize their multi-cloud infrastructure and costs."
+    },
+    {
+      id: 4,
+      name: "Alex Rodriguez",
+      designation: "CTO at QuantumLeap",
+      topic: "Quantum Computing in Everyday Applications",
+      track: "Emerging Tech",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
+      bio: "Alex Rodriguez is pioneering quantum computing applications that bridge the gap between theoretical research and practical business solutions."
+    }
+  ];
+  localStorage.setItem("speakers", JSON.stringify(staticSpeakers));
 }
 
-// Filter functionality
-function setupFilters() {
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const speakers = document.querySelectorAll(".speaker-card");
+// Sidebar toggle
+const sidebarToggle = document.getElementById("sidebar-toggle");
+const sidebarClose = document.getElementById("sidebar-close");
+const mobileSidebar = document.getElementById("mobile-sidebar");
+const sidebarBackdrop = document.getElementById("sidebar-backdrop");
 
-  filterButtons.forEach((btn) => {
+function toggleSidebar() {
+  mobileSidebar.classList.toggle("-translate-x-full");
+  if (window.innerWidth <= 768) {
+    sidebarBackdrop.style.display = mobileSidebar.classList.contains("-translate-x-full")
+      ? "none"
+      : "block";
+  }
+  document.body.style.overflow = mobileSidebar.classList.contains("-translate-x-full")
+    ? "auto"
+    : "hidden";
+}
+
+sidebarToggle?.addEventListener("click", toggleSidebar);
+sidebarClose?.addEventListener("click", toggleSidebar);
+sidebarBackdrop?.addEventListener("click", toggleSidebar);
+
+// Speaker CRUD & Search
+const STORAGE_KEY = "speakers";
+let speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+let currentDisplayed = [];
+let editIndex = null;
+
+const tableBody = document.querySelector("#speakers-table tbody");
+const searchBox = document.getElementById("search-box");
+const addBtn = document.getElementById("add-speaker-btn");
+const modal = document.getElementById("speaker-modal");
+const closeModalBtn = document.getElementById("close-modal");
+const form = document.getElementById("speaker-form");
+const nameInput = document.getElementById("speaker-name");
+const desigInput = document.getElementById("speaker-designation");
+const topicInput = document.getElementById("speaker-topic");
+const trackInput = document.getElementById("speaker-track");
+const photoInput = document.getElementById("speaker-photo");
+const photoPreview = document.getElementById("photo-preview");
+
+// this render function accepts optional list of {speaker, idx}
+function renderSpeakers(list = null) {
+  // Reload from localStorage to ensure we have the latest data
+  speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  
+  if (!list) {
+    currentDisplayed = speakers.map((sp, idx) => ({ speaker: sp, idx }));
+  } else {
+    currentDisplayed = list;
+  }
+
+  tableBody.innerHTML = "";
+
+  if (currentDisplayed.length === 0) {
+    tableBody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-8 px-4 text-center text-gray-400">
+              <i class="fas fa-microphone-slash text-2xl mb-2"></i>
+              <div>${
+                searchBox.value.trim()
+                  ? "No speakers match your search."
+                  : "No speakers yet. Add one!"
+              }</div>
+            </td>
+          </tr>`;
+    return;
+  }
+
+  currentDisplayed.forEach(({ speaker, idx }) => {
+    const tr = document.createElement("tr");
+    tr.className = "border-b border-purple-400/20 hover:bg-purple-500/5 transition";
+    const photoCell = speaker.photo
+      ? `<img src="${escapeHtml(speaker.photo)}" alt="${escapeHtml(speaker.name)}" class="w-9 h-9 rounded-full object-cover">`
+      : `<div class="w-9 h-9 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">${speaker.name.charAt(0)}</div>`;
+    
+    tr.innerHTML = `
+          <td class="py-3 px-2 sm:px-4 align-middle">${photoCell}</td>
+          <td class="py-3 px-2 sm:px-4 align-middle text-white font-medium">${escapeHtml(speaker.name)}</td>
+          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(speaker.designation)}</td>
+          <td class="py-3 px-2 sm:px-4 align-middle text-gray-300">${escapeHtml(speaker.topic)}</td>
+          <td class="py-3 px-2 sm:px-4 align-middle">
+            <div class="flex gap-2">
+              <button class="edit-btn bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg text-white text-sm" data-idx="${idx}"><i class="fas fa-pen"></i> Edit</button>
+              <button class="delete-btn bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg text-white text-sm" data-idx="${idx}"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+          </td>
+        `;
+    tableBody.appendChild(tr);
+  });
+
+  // wire buttons
+  tableBody.querySelectorAll(".edit-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const filter = btn.getAttribute("data-filter");
-
-      // Remove active state from all buttons
-      filterButtons.forEach((b) =>
-        b.classList.remove("ring-2", "ring-white", "ring-opacity-50")
-      );
-
-      // Add active state to clicked button
-      btn.classList.add("ring-2", "ring-white", "ring-opacity-50");
-
-      // Filter speakers
-      speakers.forEach((card) => {
-        if (filter === "all" || card.getAttribute("data-track") === filter) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
+      const idx = Number(btn.dataset.idx);
+      openEdit(idx);
+    });
+  });
+  tableBody.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idx = Number(btn.dataset.idx);
+      removeSpeaker(idx);
     });
   });
 }
 
-// Modal function
-function openSpeakerModal(speaker, colorClass) {
-  const speakerModal = document.getElementById("speaker-modal");
-  const modalContent = speakerModal.querySelector(".modal-content");
-
-  const avatarHtml = speaker.photo
-    ? `<img src="${speaker.photo}" alt="${speaker.name}" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 ${colorClass.bg}">`
-    : `<div class="w-32 h-32 mx-auto rounded-full ${
-        colorClass.bg
-      } mb-4 flex items-center justify-center text-white text-4xl font-bold">${speaker.name.charAt(
-        0
-      )}</div>`;
-
-  modalContent.innerHTML = `
-    ${avatarHtml}
-    <h3 class="text-2xl font-bold text-white mb-2">${speaker.name}</h3>
-    <p class="text-gray-300 mb-2">${
-      speaker.designation || "Industry Expert"
-    }</p>
-    <p class="${colorClass.text} font-medium mb-4 capitalize">${
-    speaker.track || "General"
-  } Track</p>
-    <p class="text-gray-300 text-sm mb-4">${
-      speaker.bio || speaker.topic || "Details coming soon..."
-    }</p>
-    <div class="mt-4 pt-4 border-t border-purple-500/30">
-      <p class="text-purple-300 font-semibold">Session Topic:</p>
-      <p class="text-white">${speaker.topic || "To be announced"}</p>
-    </div>
-  `;
-
-  speakerModal.classList.remove("hidden");
+// escaping HTML
+function escapeHtml(s) {
+  if (!s && s !== 0) return "";
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
-// Initialize when page loads
-document.addEventListener("DOMContentLoaded", function () {
-  loadSpeakers();
+// open modal for new speaker
+function openCreate() {
+  editIndex = null;
+  form.reset();
+  photoPreview.classList.add("hidden");
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
 
-  // Modal close functionality
-  const modalClose = document.getElementById("modal-close");
-  const speakerModal = document.getElementById("speaker-modal");
+// open modal for edit
+function openEdit(idx) {
+  const sp = speakers[idx];
+  if (!sp) return;
+  editIndex = idx;
+  nameInput.value = sp.name || "";
+  desigInput.value = sp.designation || "";
+  topicInput.value = sp.topic || "";
+  trackInput.value = sp.track || "";
+  photoInput.value = sp.photo || "";
+  if (sp.photo) {
+    photoPreview.src = sp.photo;
+    photoPreview.classList.remove("hidden");
+  } else {
+    photoPreview.classList.add("hidden");
+  }
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
 
-  modalClose.addEventListener("click", () => {
-    speakerModal.classList.add("hidden");
-  });
+// close modal
+function closeModal() {
+  modal.classList.add("hidden");
+  document.body.style.overflow = "auto";
+  editIndex = null;
+  form.reset();
+  photoPreview.classList.add("hidden");
+}
 
-  speakerModal.addEventListener("click", (e) => {
-    if (e.target === speakerModal) {
-      speakerModal.classList.add("hidden");
-    }
-  });
+// add/update speaker - PRESERVE ALL FIELDS
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = nameInput.value.trim();
+  const designation = desigInput.value.trim();
+  const topic = topicInput.value.trim();
+  const track = trackInput.value.trim();
+  const photo = photoInput.value.trim();
+
+  if (!name || !designation || !topic || !track) {
+    alert("Please fill name, designation, topic, and track.");
+    return;
+  }
+
+  // Reload speakers to get current state
+  speakers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+  if (editIndex === null) {
+    // create - include all fields
+    const newSpeaker = {
+      id: speakers.length > 0 ? Math.max(...speakers.map(s => s.id)) + 1 : 1,
+      name,
+      designation,
+      topic,
+      track,
+      photo: photo || "",
+      bio: `${name} is a renowned expert in ${topic}.` // Default bio
+    };
+    speakers.push(newSpeaker);
+  } else {
+    // update - preserve existing fields
+    speakers[editIndex] = {
+      ...speakers[editIndex], // Keep existing fields like id, bio
+      name,
+      designation,
+      topic,
+      track,
+      photo: photo || ""
+    };
+  }
+
+  // Save and reload
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(speakers));
+  searchBox.value = "";
+  renderSpeakers();
+  closeModal();
 });
 
-function redirectToRegister() {
-  window.location.href = "index.html?register=open";
+// remove speaker by actual index
+function removeSpeaker(idx) {
+  if (!confirm("Delete this speaker?")) return;
+  speakers.splice(idx, 1);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(speakers));
+  if (searchBox.value.trim()) {
+    performSearch(searchBox.value);
+  } else {
+    renderSpeakers();
+  }
 }
+
+// search that returns list of {speaker, idx}
+function performSearch(q) {
+  const query = String(q || "").toLowerCase().trim();
+  if (!query) {
+    renderSpeakers();
+    return;
+  }
+
+  const filtered = speakers
+    .map((sp, idx) => ({ speaker: sp, idx }))
+    .filter(
+      ({ speaker }) =>
+        speaker.name.toLowerCase().includes(query) ||
+        speaker.designation.toLowerCase().includes(query) ||
+        speaker.topic.toLowerCase().includes(query) ||
+        speaker.track.toLowerCase().includes(query)
+    );
+
+  renderSpeakers(filtered);
+}
+
+// wire search box
+searchBox.addEventListener("input", (e) => performSearch(e.target.value));
+
+// wire add button & modal close/outside click
+addBtn.addEventListener("click", openCreate);
+closeModalBtn.addEventListener("click", closeModal);
+modal.addEventListener("click", (ev) => {
+  if (ev.target === modal) closeModal();
+});
+
+// live photo preview
+photoInput.addEventListener("input", () => {
+  const url = photoInput.value.trim();
+  if (!url) {
+    photoPreview.classList.add("hidden");
+    return;
+  }
+  if (/^https?:\/\//i.test(url)) {
+    photoPreview.src = url;
+    photoPreview.classList.remove("hidden");
+  } else {
+    photoPreview.classList.add("hidden");
+  }
+});
+
+// initial render
+renderSpeakers();
+
+// keep sidebar state consistent on resize
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    sidebarBackdrop.style.display = "none";
+    mobileSidebar.classList.add("-translate-x-full");
+  }
+});
