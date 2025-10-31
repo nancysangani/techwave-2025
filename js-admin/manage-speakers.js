@@ -1,41 +1,42 @@
-// Always load static data (for development) - comment out for production
+
+// Static speakers data
 const staticSpeakers = [
   {
     id: 1,
     name: "Dr. Sarah Chen",
-    designation: "AI Research Lead at NeuroTech",
-    topic: "The Future of Neural Networks",
-    track: "AI",
-    photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-    bio: "Dr. Sarah Chen leads AI research at NeuroTech, focusing on neural network architectures and their practical applications."
+    designation: "AI Research Lead at Google",
+    topic: "The Future of Artificial Intelligence",
+    photo: "",
+    track: "keynote sessions",
+    bio: "Leading AI researcher with 10+ years of experience in machine learning and neural networks. Published over 50 research papers in top AI conferences.",
   },
   {
     id: 2,
-    name: "Marcus Johnson",
-    designation: "Blockchain Architect at ChainCore",
+    name: "Rajiv Mehta",
+    designation: "Blockchain Architect at Ethereum Foundation",
     topic: "Web3 and Decentralized Future",
-    track: "Web3",
-    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-    bio: "Marcus Johnson is a blockchain architect with over 10 years of experience in decentralized systems and Web3 technologies."
+    photo: "",
+    track: "panel discussions",
+    bio: "Blockchain expert specializing in smart contracts and decentralized applications. Contributor to Ethereum core development since 2018.",
   },
   {
     id: 3,
     name: "Priya Sharma",
-    designation: "Cloud Solutions Director at CloudScale",
-    topic: "Multi-Cloud Strategies for Enterprises",
-    track: "Cloud",
-    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-    bio: "Priya Sharma specializes in cloud architecture and helps enterprises optimize their multi-cloud infrastructure and costs."
+    designation: "Cloud Solutions Director at Microsoft",
+    topic: "Cloud Computing Revolution",
+    photo: "",
+    track: "keynote sessions",
+    bio: "Cloud infrastructure specialist with expertise in Azure, AWS, and hybrid cloud solutions. Helped migrate 100+ enterprises to cloud platforms.",
   },
   {
     id: 4,
-    name: "Alex Rodriguez",
-    designation: "CTO at QuantumLeap",
-    topic: "Quantum Computing in Everyday Applications",
-    track: "Emerging Tech",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80",
-    bio: "Alex Rodriguez is pioneering quantum computing applications that bridge the gap between theoretical research and practical business solutions."
-  }
+    name: "Marcus Johnson",
+    designation: "Host of the Event",
+    topic: "Awards and Closing Ceremony",
+    photo: "",
+    track: "awards",
+    bio: "Hosted 250+ Events",
+  },
 ];
 
 // For development: always reset to static data
