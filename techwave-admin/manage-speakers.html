@@ -9,7 +9,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap"
         rel="stylesheet"> <!-- fonts: Orbitron and Inter -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- icons -->
     <link rel="stylesheet" href="../dist/output.css">
 
     <style>
@@ -75,36 +76,41 @@
 <body class="text-gray-300 flex min-h-screen">
 
     <aside id="sidebar"
-        class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-purple-900/95 to-purple-800/90 backdrop-blur-md border-r border-purple-700/40 p-6 hidden md:flex flex-col z-50">
+        class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-purple-900/95 to-purple-800/90 backdrop-blur-md border-r border-purple-700/40 p-6 hidden md:flex flex-col justify-between z-50">
         <div>
             <div class="flex items-center">
                 <div
-                    class="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center mr-3">
+                    class="mb-10 w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center mr-3">
                     <i class="fas fa-wave-square text-white"></i>
                 </div>
-                <h1 class="font-orbitron text-xl text-white">TechWave <span class="text-purple-300">2025</span></h1>
+                <h1 class="font-orbitron text-xl text-white mb-10">TechWave <span class="text-purple-300">2025</span>
+                </h1>
             </div>
-
-            <nav class="flex flex-col gap-1 mt-6">
+            <nav class="flex flex-col gap-1">
                 <a href="dashboard.html"
                     class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-chart-line nav-icon"></i> <span>Dashboard</span>
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    <span>Dashboard</span>
                 </a>
                 <a href="manage-events.html"
                     class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-calendar-alt nav-icon"></i> <span>Manage Events</span>
+                    <i class="fas fa-calendar-alt nav-icon"></i>
+                    <span>Manage Events</span>
                 </a>
                 <a href="manage-speakers.html"
                     class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg active-menu">
-                    <i class="fas fa-microphone nav-icon"></i> <span>Manage Speakers</span>
+                    <i class="fas fa-microphone nav-icon"></i>
+                    <span>Manage Speakers</span>
                 </a>
                 <a href="manage-sponsors.html"
                     class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-handshake nav-icon"></i> <span>Manage Sponsors</span>
+                    <i class="fas fa-handshake nav-icon"></i>
+                    <span>Manage Sponsors</span>
                 </a>
                 <a href="manage-registrations.html"
                     class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-user-plus nav-icon"></i> <span>Manage Registrations</span>
+                    <i class="fas fa-user-plus nav-icon"></i>
+                    <span>Manage Registrations</span>
                 </a>
                 <a href="../index.html"
                     class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
@@ -113,8 +119,7 @@
                 </a>
             </nav>
         </div>
-
-        <div class="mt-auto">
+        <div>
             <div class="flex items-center gap-3 mb-4 p-3 rounded-lg bg-purple-800/30">
                 <div
                     class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
@@ -127,7 +132,8 @@
             </div>
             <button
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg w-full transition">
-                <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
             </button>
         </div>
     </aside>
@@ -135,10 +141,11 @@
     <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
 
     <div id="mobile-sidebar"
-        class="mobile-sidebar fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-purple-900/95 to-purple-800/90 backdrop-blur-md border-r border-purple-700/40 p-6 flex flex-col justify-between z-60 transform -translate-x-full transition-transform duration-300 md:hidden">
+        class="mobile-sidebar fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-purple-900/95 to-purple-800/90 backdrop-blur-md border-r border-purple-700/40 p-6 flex flex-col justify-between z-50 transform -translate-x-full transition-transform duration-300 md:hidden">
+
         <div>
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
+            <div class="flex items-center">
+                <div class="flex items-center justify-between">
                     <div
                         class="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center mr-3">
                         <i class="fas fa-wave-square text-white"></i>
@@ -147,40 +154,46 @@
                 </div>
 
                 <button id="sidebar-close"
-                    class="p-2 rounded-lg bg-purple-700/80 hover:bg-purple-700 text-purple-200 transition">
+                    class="sidebar-close p-2 rounded-lg bg-purple-700/80 hover:bg-purple-700 text-purple-200 transition">
                     <i class="fas fa-times text-lg"></i>
                 </button>
             </div>
 
-            <nav class="flex flex-col gap-1 mt-8">
-                <a href="dashboard.html"
-                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-chart-line nav-icon"></i> <span>Dashboard</span>
-                </a>
-                <a href="manage-events.html"
-                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-calendar-alt nav-icon"></i> <span>Manage Events</span>
-                </a>
-                <a href="manage-speakers.html"
-                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg active-menu">
-                    <i class="fas fa-microphone nav-icon"></i> <span>Manage Speakers</span>
-                </a>
-                <a href="manage-sponsors.html"
-                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-handshake nav-icon"></i> <span>Manage Sponsors</span>
-                </a>
-                <a href="manage-registrations.html"
-                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-user-plus nav-icon"></i> <span>Manage Registrations</span>
-                </a>
-                <a href="../index.html"
-                    class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
-                    <i class="fas fa-home nav-icon"></i>
-                    <span>Home Page</span>
-                </a>
-            </nav>
+            <div class="mobile-sidebar-header mt-10">
+                <nav class="flex flex-col gap-1">
+                    <a href="dashboard.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-chart-line nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="manage-events.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-calendar-alt nav-icon"></i>
+                        <span>Manage Events</span>
+                    </a>
+                    <a href="manage-speakers.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg active-menu">
+                        <i class="fas fa-microphone nav-icon"></i>
+                        <span>Manage Speakers</span>
+                    </a>
+                    <a href="manage-sponsors.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-handshake nav-icon"></i>
+                        <span>Manage Sponsors</span>
+                    </a>
+                    <a href="manage-registrations.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-user-plus nav-icon"></i>
+                        <span>Manage Registrations</span>
+                    </a>
+                    <a href="../index.html"
+                        class="flex items-center gap-3 text-gray-300 hover:text-purple-300 hover:bg-purple-800/30 transition font-medium py-3 px-3 rounded-lg">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Home Page</span>
+                    </a>
+                </nav>
+            </div>
         </div>
-
         <div>
             <div class="flex items-center gap-3 mb-4 p-3 rounded-lg bg-purple-800/30">
                 <div
@@ -194,7 +207,8 @@
             </div>
             <button
                 class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg w-full transition">
-                <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
             </button>
         </div>
     </div>
