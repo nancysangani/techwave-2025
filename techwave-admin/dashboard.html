@@ -432,6 +432,42 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js-admin/dashboard.js"></script>
+    <script>
+        // Check admin authentication on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if user is authenticated as admin
+            const isAuthenticated = localStorage.getItem('adminAuthenticated');
+            const loginTime = localStorage.getItem('adminLoginTime');
+
+            if (!isAuthenticated || !loginTime) {
+                // Redirect to login page
+                window.location.href = '../admin-login.html';
+                return;
+            }
+
+            // Check if session is expired (2 hours)
+            const loginTimestamp = new Date(loginTime).getTime();
+            const currentTime = new Date().getTime();
+            const twoHours = 2 * 60 * 60 * 1000;
+
+            if (currentTime - loginTimestamp > twoHours) {
+                // Session expired
+                localStorage.removeItem('adminAuthenticated');
+                localStorage.removeItem('adminLoginTime');
+                window.location.href = '../admin-login.html';
+                return;
+            }
+
+            // Admin is authenticated, continue loading the dashboard
+            console.log('Admin authenticated, loading dashboard...');
+        });
+
+        function adminLogout() {
+            localStorage.removeItem('adminAuthenticated');
+            localStorage.removeItem('adminLoginTime');
+            window.location.href = '../admin-login.html';
+        }
+    </script>
 
 </body>
 

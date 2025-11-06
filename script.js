@@ -738,3 +738,56 @@ paymentSuccessModal.addEventListener("click", (e) => {
     document.body.style.overflow = "auto";
   }
 });
+
+// Admin Authentication Functions
+function checkAdminAuth() {
+  const isAuthenticated = localStorage.getItem("adminAuthenticated");
+  const loginTime = localStorage.getItem("adminLoginTime");
+
+  if (!isAuthenticated || !loginTime) {
+    return false;
+  }
+
+  // Check if login is within 2 hours (session timeout)
+  const loginTimestamp = new Date(loginTime).getTime();
+  const currentTime = new Date().getTime();
+  const twoHours = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
+
+  if (currentTime - loginTimestamp > twoHours) {
+    // Session expired
+    localStorage.removeItem("adminAuthenticated");
+    localStorage.removeItem("adminLoginTime");
+    return false;
+  }
+
+  return true;
+}
+
+function requireAdminAuth() {
+  if (!checkAdminAuth()) {
+    // Redirect to admin login page
+    window.location.href = "../admin-login.html";
+    return false;
+  }
+  return true;
+}
+
+function adminLogout() {
+  localStorage.removeItem("adminAuthenticated");
+  localStorage.removeItem("adminLoginTime");
+  window.location.href = "../admin-login.html";
+}
+
+// Initialize admin credentials on first load
+function initializeAdminCredentials() {
+  if (!localStorage.getItem("adminCredentialsSet")) {
+    // Set default admin credentials (in production, this should be done server-side)
+    const defaultAdmin = {
+      username: "admin",
+      password: "TechWave2025!",
+    };
+    localStorage.setItem("adminDefaultUsername", defaultAdmin.username);
+    localStorage.setItem("adminDefaultPassword", defaultAdmin.password);
+    localStorage.setItem("adminCredentialsSet", "true");
+  }
+}
