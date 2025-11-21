@@ -99,6 +99,15 @@ Check out the live version of **TechWave 2025** here:
 
 ---
 
+## 🔐 Admin Login Credentials (For Educational Use Only)
+Use the following credentials to access the Admin Dashboard:
+
+Username: admin  
+Password: TechWave2025!  
+
+> ⚠️ These credentials are for educational/demo purposes only.  
+> They are not secure and should not be used in real deployments.
+
 ## 🔒 Security Notes
 - Admin interface includes basic access control  
 - Recommended to implement backend authentication for production  
